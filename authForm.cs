@@ -7,6 +7,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Data.SqlClient;
+using System.Data.SqlTypes;
+using System.Runtime.Remoting;
 
 namespace uchetzakazov
 {
@@ -39,10 +42,16 @@ namespace uchetzakazov
 
         private void loginButton_Click(object sender, EventArgs e)
         {
+
             mainForm mainForm = new mainForm();
-            authForm authForm = new authForm();
             mainForm.Show();
-            authForm.Close();
+            
+            
+        }
+
+        private void authForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Application.Exit();
         }
     }
 }

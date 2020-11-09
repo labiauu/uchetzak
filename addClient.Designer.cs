@@ -93,7 +93,7 @@
             // clientNumber
             // 
             this.clientNumber.Location = new System.Drawing.Point(6, 104);
-            this.clientNumber.Mask = "+7 (999) 000-0000";
+            this.clientNumber.Mask = "+79990000000";
             this.clientNumber.Name = "clientNumber";
             this.clientNumber.Size = new System.Drawing.Size(376, 26);
             this.clientNumber.TabIndex = 9;

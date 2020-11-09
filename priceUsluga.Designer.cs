@@ -32,16 +32,16 @@
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.saveUsluga = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
-            this.uchetDataSet = new uchetzakazov.uchetDataSet();
             this.priceuslugaBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.uchetDataSet = new uchetzakazov.uchetDataSet();
             this.price_uslugaTableAdapter = new uchetzakazov.uchetDataSetTableAdapters.price_uslugaTableAdapter();
             this.checkUsluga = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.idusulgaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nameuslugaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.priceuslugaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nameusluga = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.price = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.uchetDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.priceuslugaBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.uchetDataSet)).BeginInit();
             this.SuspendLayout();
             // 
             // dataGridView1
@@ -51,14 +51,15 @@
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.checkUsluga,
-            this.idusulgaDataGridViewTextBoxColumn,
-            this.nameuslugaDataGridViewTextBoxColumn,
-            this.priceuslugaDataGridViewTextBoxColumn});
+            this.id,
+            this.nameusluga,
+            this.price});
             this.dataGridView1.DataSource = this.priceuslugaBindingSource;
             this.dataGridView1.Location = new System.Drawing.Point(15, 30);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.Size = new System.Drawing.Size(547, 208);
             this.dataGridView1.TabIndex = 0;
+            this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
             // 
             // saveUsluga
             // 
@@ -72,6 +73,7 @@
             this.saveUsluga.TabIndex = 1;
             this.saveUsluga.Text = "Сохранить";
             this.saveUsluga.UseVisualStyleBackColor = false;
+            this.saveUsluga.Click += new System.EventHandler(this.saveUsluga_Click);
             // 
             // label1
             // 
@@ -83,15 +85,15 @@
             this.label1.TabIndex = 2;
             this.label1.Text = "Выберите услуги";
             // 
-            // uchetDataSet
-            // 
-            this.uchetDataSet.DataSetName = "uchetDataSet";
-            this.uchetDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
             // priceuslugaBindingSource
             // 
             this.priceuslugaBindingSource.DataMember = "price_usluga";
             this.priceuslugaBindingSource.DataSource = this.uchetDataSet;
+            // 
+            // uchetDataSet
+            // 
+            this.uchetDataSet.DataSetName = "uchetDataSet";
+            this.uchetDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // price_uslugaTableAdapter
             // 
@@ -102,24 +104,24 @@
             this.checkUsluga.HeaderText = "";
             this.checkUsluga.Name = "checkUsluga";
             // 
-            // idusulgaDataGridViewTextBoxColumn
+            // id
             // 
-            this.idusulgaDataGridViewTextBoxColumn.DataPropertyName = "id_usulga";
-            this.idusulgaDataGridViewTextBoxColumn.HeaderText = "id услуги";
-            this.idusulgaDataGridViewTextBoxColumn.Name = "idusulgaDataGridViewTextBoxColumn";
-            this.idusulgaDataGridViewTextBoxColumn.ReadOnly = true;
+            this.id.DataPropertyName = "id";
+            this.id.HeaderText = "id";
+            this.id.Name = "id";
+            this.id.ReadOnly = true;
             // 
-            // nameuslugaDataGridViewTextBoxColumn
+            // nameusluga
             // 
-            this.nameuslugaDataGridViewTextBoxColumn.DataPropertyName = "name_usluga";
-            this.nameuslugaDataGridViewTextBoxColumn.HeaderText = "Наименование";
-            this.nameuslugaDataGridViewTextBoxColumn.Name = "nameuslugaDataGridViewTextBoxColumn";
+            this.nameusluga.DataPropertyName = "name_usluga";
+            this.nameusluga.HeaderText = "name_usluga";
+            this.nameusluga.Name = "nameusluga";
             // 
-            // priceuslugaDataGridViewTextBoxColumn
+            // price
             // 
-            this.priceuslugaDataGridViewTextBoxColumn.DataPropertyName = "price_usluga";
-            this.priceuslugaDataGridViewTextBoxColumn.HeaderText = "Цена за час";
-            this.priceuslugaDataGridViewTextBoxColumn.Name = "priceuslugaDataGridViewTextBoxColumn";
+            this.price.DataPropertyName = "price";
+            this.price.HeaderText = "price";
+            this.price.Name = "price";
             // 
             // priceUsluga
             // 
@@ -135,8 +137,8 @@
             this.Text = "Выбор услуги";
             this.Load += new System.EventHandler(this.priceUsluga_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.uchetDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.priceuslugaBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.uchetDataSet)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -148,11 +150,12 @@
         private System.Windows.Forms.Button saveUsluga;
         private System.Windows.Forms.Label label1;
         private uchetDataSet uchetDataSet;
+        private System.Windows.Forms.DataGridViewTextBoxColumn idusulgaDataGridViewTextBoxColumn;
         private System.Windows.Forms.BindingSource priceuslugaBindingSource;
         private uchetDataSetTableAdapters.price_uslugaTableAdapter price_uslugaTableAdapter;
         private System.Windows.Forms.DataGridViewCheckBoxColumn checkUsluga;
-        private System.Windows.Forms.DataGridViewTextBoxColumn idusulgaDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn nameuslugaDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn priceuslugaDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn id;
+        private System.Windows.Forms.DataGridViewTextBoxColumn nameusluga;
+        private System.Windows.Forms.DataGridViewTextBoxColumn price;
     }
 }

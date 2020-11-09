@@ -30,18 +30,17 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(mainForm));
+            System.Windows.Forms.BindingSource clientsBindingSource;
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.orderButton = new System.Windows.Forms.Button();
             this.reportButton = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.clientsBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.uchetDataSet = new uchetzakazov.uchetDataSet();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.statusesBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.datePick = new System.Windows.Forms.DateTimePicker();
             this.adressBox = new System.Windows.Forms.TextBox();
             this.clientBox = new System.Windows.Forms.TextBox();
@@ -51,6 +50,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.statusesTableAdapter = new uchetzakazov.uchetDataSetTableAdapters.statusesTableAdapter();
             this.clientsTableAdapter = new uchetzakazov.uchetDataSetTableAdapters.clientsTableAdapter();
+            this.statusesBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.idclientDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.numberDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -58,17 +58,21 @@
             this.commentDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.idstatusDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.createdateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.fillByToolStrip = new System.Windows.Forms.ToolStrip();
+            this.fillByToolStripButton = new System.Windows.Forms.ToolStripButton();
+            clientsBindingSource = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.clientsBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(clientsBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.uchetDataSet)).BeginInit();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.statusesBindingSource)).BeginInit();
+            this.fillByToolStrip.SuspendLayout();
             this.SuspendLayout();
             // 
             // pictureBox1
             // 
-            this.pictureBox1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox1.BackgroundImage")));
+            
             this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.pictureBox1.InitialImage = null;
             this.pictureBox1.Location = new System.Drawing.Point(12, 12);
@@ -92,7 +96,7 @@
             this.orderButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.orderButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.orderButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.orderButton.Image = ((System.Drawing.Image)(resources.GetObject("orderButton.Image")));
+            
             this.orderButton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.orderButton.Location = new System.Drawing.Point(12, 68);
             this.orderButton.Name = "orderButton";
@@ -128,7 +132,7 @@
             this.commentDataGridViewTextBoxColumn,
             this.idstatusDataGridViewTextBoxColumn,
             this.createdateDataGridViewTextBoxColumn});
-            this.dataGridView1.DataSource = this.clientsBindingSource;
+            this.dataGridView1.DataSource = clientsBindingSource;
             this.dataGridView1.GridColor = System.Drawing.SystemColors.Control;
             this.dataGridView1.Location = new System.Drawing.Point(12, 107);
             this.dataGridView1.Name = "dataGridView1";
@@ -141,8 +145,9 @@
             // 
             // clientsBindingSource
             // 
-            this.clientsBindingSource.DataMember = "clients";
-            this.clientsBindingSource.DataSource = this.uchetDataSet;
+            clientsBindingSource.AllowNew = true;
+            clientsBindingSource.DataMember = "clients";
+            clientsBindingSource.DataSource = this.uchetDataSet;
             // 
             // uchetDataSet
             // 
@@ -202,12 +207,7 @@
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(194, 24);
             this.comboBox1.TabIndex = 8;
-            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
-            // 
-            // statusesBindingSource
-            // 
-            this.statusesBindingSource.DataMember = "statuses";
-            this.statusesBindingSource.DataSource = this.uchetDataSet;
+            
             // 
             // datePick
             // 
@@ -274,6 +274,11 @@
             // 
             this.clientsTableAdapter.ClearBeforeFill = true;
             // 
+            // statusesBindingSource
+            // 
+            this.statusesBindingSource.DataMember = "statuses";
+            this.statusesBindingSource.DataSource = this.uchetDataSet;
+            // 
             // idclientDataGridViewTextBoxColumn
             // 
             this.idclientDataGridViewTextBoxColumn.DataPropertyName = "id_client";
@@ -290,7 +295,7 @@
             // numberDataGridViewTextBoxColumn
             // 
             this.numberDataGridViewTextBoxColumn.DataPropertyName = "number";
-            this.numberDataGridViewTextBoxColumn.HeaderText = "Номер телефона";
+            this.numberDataGridViewTextBoxColumn.HeaderText = "Номер";
             this.numberDataGridViewTextBoxColumn.Name = "numberDataGridViewTextBoxColumn";
             // 
             // adressDataGridViewTextBoxColumn
@@ -308,7 +313,7 @@
             // idstatusDataGridViewTextBoxColumn
             // 
             this.idstatusDataGridViewTextBoxColumn.DataPropertyName = "id_status";
-            this.idstatusDataGridViewTextBoxColumn.HeaderText = "Статус";
+            this.idstatusDataGridViewTextBoxColumn.HeaderText = "id_status";
             this.idstatusDataGridViewTextBoxColumn.Name = "idstatusDataGridViewTextBoxColumn";
             // 
             // createdateDataGridViewTextBoxColumn
@@ -316,6 +321,25 @@
             this.createdateDataGridViewTextBoxColumn.DataPropertyName = "create_date";
             this.createdateDataGridViewTextBoxColumn.HeaderText = "Дата создания";
             this.createdateDataGridViewTextBoxColumn.Name = "createdateDataGridViewTextBoxColumn";
+            // 
+            // fillByToolStrip
+            // 
+            this.fillByToolStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.fillByToolStripButton});
+            this.fillByToolStrip.Location = new System.Drawing.Point(0, 0);
+            this.fillByToolStrip.Name = "fillByToolStrip";
+            this.fillByToolStrip.Size = new System.Drawing.Size(890, 25);
+            this.fillByToolStrip.TabIndex = 6;
+            this.fillByToolStrip.Text = "fillByToolStrip";
+            // 
+            // fillByToolStripButton
+            // 
+            this.fillByToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.fillByToolStripButton.Name = "fillByToolStripButton";
+            this.fillByToolStripButton.Size = new System.Drawing.Size(39, 22);
+            this.fillByToolStripButton.Text = "FillBy";
+            
+
             // 
             // mainForm
             // 
@@ -325,6 +349,7 @@
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.ClientSize = new System.Drawing.Size(890, 539);
+            this.Controls.Add(this.fillByToolStrip);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.reportButton);
@@ -334,14 +359,17 @@
             this.Name = "mainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Учет заказов Высокий стандарт";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.mainForm_FormClosed);
             this.Load += new System.EventHandler(this.mainForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.clientsBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(clientsBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.uchetDataSet)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.statusesBindingSource)).EndInit();
+            this.fillByToolStrip.ResumeLayout(false);
+            this.fillByToolStrip.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -365,9 +393,7 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private uchetDataSet uchetDataSet;
-        private System.Windows.Forms.BindingSource statusesBindingSource;
         private uchetDataSetTableAdapters.statusesTableAdapter statusesTableAdapter;
-        private System.Windows.Forms.BindingSource clientsBindingSource;
         private uchetDataSetTableAdapters.clientsTableAdapter clientsTableAdapter;
         public System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.DataGridViewTextBoxColumn idclientDataGridViewTextBoxColumn;
@@ -377,5 +403,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn commentDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn idstatusDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn createdateDataGridViewTextBoxColumn;
+        private System.Windows.Forms.BindingSource statusesBindingSource;
+        private System.Windows.Forms.ToolStrip fillByToolStrip;
+        private System.Windows.Forms.ToolStripButton fillByToolStripButton;
     }
 }

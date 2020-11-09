@@ -28,8 +28,7 @@ namespace uchetzakazov
 
         private void button1_Click(object sender, EventArgs e)
         {
-            spisok_tov spisok_Tov = new spisok_tov();
-            spisok_Tov.Show();
+            
         }
 
         private void button2_Click(object sender, EventArgs e)

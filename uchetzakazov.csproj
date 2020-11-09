@@ -84,17 +84,11 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="spisok_tov.cs">
+    <Compile Include="priceUsluga.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="spisok_tov.Designer.cs">
-      <DependentUpon>spisok_tov.cs</DependentUpon>
-    </Compile>
-    <Compile Include="spisok_uslug.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="spisok_uslug.Designer.cs">
-      <DependentUpon>spisok_uslug.cs</DependentUpon>
+    <Compile Include="priceUsluga.Designer.cs">
+      <DependentUpon>priceUsluga.cs</DependentUpon>
     </Compile>
     <Compile Include="uchetDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -128,11 +122,8 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="spisok_tov.resx">
-      <DependentUpon>spisok_tov.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="spisok_uslug.resx">
-      <DependentUpon>spisok_uslug.cs</DependentUpon>
+    <EmbeddedResource Include="priceUsluga.resx">
+      <DependentUpon>priceUsluga.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

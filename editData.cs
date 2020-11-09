@@ -13,12 +13,17 @@ using System.Runtime.Remoting;
 
 namespace uchetzakazov
 {
+    
     public partial class editData : Form
     {
+        public int idClient;
+        
+        
+        
         public editData()
         {
             InitializeComponent();
-     
+            
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -33,6 +38,8 @@ namespace uchetzakazov
 
         private void editData_Load(object sender, EventArgs e)
         {
+            // TODO: данная строка кода позволяет загрузить данные в таблицу "uchetDataSet1.sostavzakaz". При необходимости она может быть перемещена или удалена.
+            this.sostavzakazTableAdapter.Fill(this.uchetDataSet.sostavzakaz);
             // TODO: данная строка кода позволяет загрузить данные в таблицу "uchetDataSet.zakaz". При необходимости она может быть перемещена или удалена.
             this.zakazTableAdapter.Fill(this.uchetDataSet.zakaz);
             // TODO: данная строка кода позволяет загрузить данные в таблицу "uchetDataSet.statuses". При необходимости она может быть перемещена или удалена.
@@ -42,13 +49,17 @@ namespace uchetzakazov
 
         private void button1_Click(object sender, EventArgs e)
         {
+            mainForm mainForm = new mainForm();
             this.Close();
+            mainForm.Show();
         }
 
-        
+
 
         private void saveChanges_Click(object sender, EventArgs e)
         {
+
+            int idStatus = Convert.ToInt32(editStatus.SelectedIndex)+1;
             using (SqlConnection sc = new SqlConnection())
             {
                 sc.ConnectionString = @"Data Source=DESKTOP-43BJ3R7\SQLEXPRESS;Initial Catalog=uchet;Integrated Security=True";
@@ -56,25 +67,52 @@ namespace uchetzakazov
 
                 using (SqlCommand com = sc.CreateCommand())
                 {
-                    com.CommandText = (@"insert into clients(name, number, adress, comment, create_date, id_status) values(@clientName, @clientNumber, @clientAdress, @clientComment, @dateTime, @status)");
+                    com.CommandText = (@"update clients set name = @clientName, number = @clientNumber, adress = @clientAdress, comment = @clientComment, id_status = @idStatus where id_client = @idClient");
 
                     //TODO: Change my arbitrary "80" to actual Stock fields' sizes! 
-                    com.Parameters.Add("@clientName", SqlDbType.NChar, 255).Value = clientName.Text;
-                    com.Parameters.Add("@clientNumber", SqlDbType.NChar, 12).Value = clientNumber.Text;
-                    com.Parameters.Add("@clientAdress", SqlDbType.NChar, 255).Value = clientAdress.Text;
-                    com.Parameters.Add("@clientComment", SqlDbType.NChar, 255).Value = clientComment.Text;
-                    com.Parameters.Add("@dateTime", SqlDbType.Date).Value = dateTime.Value;
-                    com.Parameters.Add("@status", SqlDbType.Int).Value = 1;
+                    com.Parameters.Add("@idClient", SqlDbType.Int).Value = idClient;
+                    com.Parameters.Add("@clientName", SqlDbType.NChar, 255).Value = editClient.Text;
+                    com.Parameters.Add("@clientNumber", SqlDbType.NChar, 12).Value = editNumber.Text;
+                    com.Parameters.Add("@clientAdress", SqlDbType.NChar, 255).Value = editAdress.Text;
+                    com.Parameters.Add("@clientComment", SqlDbType.NChar, 255).Value = editComment.Text;
+                    com.Parameters.Add("@idStatus", SqlDbType.Int).Value = idStatus;
+                    
+
                     com.ExecuteNonQuery();
 
                 }
                 sc.Close();
+
             }
+            this.Close();
+            mainForm mainForm = new mainForm();
+            mainForm.Show();
+
+        }
+
+        private void btnAddTovar_Click(object sender, EventArgs e)
+        {
+            priceTovar priceTovar = new priceTovar();
+            priceTovar.Show();
+            this.Close();
+            
+        }
 
         private void btnAddUsluga_Click(object sender, EventArgs e)
         {
             priceUsluga priceUsluga = new priceUsluga();
             priceUsluga.Show();
+            this.Close();
+        }
+
+        private void editData_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            //mainForm.Show();
+        }
+
+        private void statusesBindingSource_CurrentChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -15,32 +15,25 @@ namespace uchetzakazov
 {
     public partial class mainForm : Form
     {
-
+        editData editData = new editData();
+        orderForm orderForm = new orderForm();
+        reportForm reportForm = new reportForm();
         public mainForm()
         {
             InitializeComponent();
-           
-            
-
         }
 
         private void orderButton_Click(object sender, EventArgs e)
         {
-            orderForm orderForm = new orderForm();
             orderForm.Show();
             this.Close();
         }
 
         private void reportButton_Click(object sender, EventArgs e)
         {
-            reportForm reportForm = new reportForm();
             reportForm.Show();
         }
 
-        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
 
         private void mainForm_Load(object sender, EventArgs e)
         {
@@ -53,24 +46,28 @@ namespace uchetzakazov
 
         private void dataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         { 
-            editData editData = new editData();
             
-
                 if (dataGridView1.CurrentRow != null)
                 {
-                string nameClient = dataGridView1.SelectedRows[0].Cells[0].Value.ToString();
-                string numberClient = dataGridView1.SelectedRows[0].Cells[1].Value.ToString(); 
-                string adressClient = dataGridView1.SelectedRows[0].Cells[2].Value.ToString();
-                string commentClient = dataGridView1.SelectedRows[0].Cells[3].Value.ToString();
-
-                editData.editName.Text = nameClient;
+                string id = dataGridView1.SelectedRows[0].Cells[0].Value.ToString();
+                string nameClient = dataGridView1.SelectedRows[0].Cells[1].Value.ToString();
+                string numberClient = dataGridView1.SelectedRows[0].Cells[2].Value.ToString(); 
+                string adressClient = dataGridView1.SelectedRows[0].Cells[3].Value.ToString();
+                string commentClient = dataGridView1.SelectedRows[0].Cells[4].Value.ToString();
+                //string statusId = dataGridView1.SelectedRows[0].Cells[5].Value.ToString();
+                //int statusItem = int.Parse(statusId);
+                
+                
+                editData.idClient = int.Parse(id);
+                editData.editClient.Text = nameClient;
                 editData.editNumber.Text= numberClient;
-                editData.editAdress.Text = adressClient;
+                editData.textBox1.Text = adressClient;
                 editData.editComment.Text = commentClient;
-                editData.Show();
-
-
+                //editData.editStatus.DisplayMember = statusId;
+ 
                 }
+            editData.Show();
+            this.Close();
         }
 
         private void fillByToolStripButton_Click(object sender, EventArgs e)
@@ -86,43 +83,11 @@ namespace uchetzakazov
 
         }
 
-        private void fillByToolStripButton_Click_1(object sender, EventArgs e)
+       
+
+        private void mainForm_FormClosed(object sender, FormClosedEventArgs e)
         {
-            try
-            {
-                this.clientsTableAdapter.FillBy(this.uchetDataSet.clients);
-            }
-            catch (System.Exception ex)
-            {
-                System.Windows.Forms.MessageBox.Show(ex.Message);
-            }
-
-        }
-
-        private void fillByToolStripButton1_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                this.clientsTableAdapter.FillBy(this.uchetDataSet.clients);
-            }
-            catch (System.Exception ex)
-            {
-                System.Windows.Forms.MessageBox.Show(ex.Message);
-            }
-
-        }
-
-        private void fillByToolStripButton_Click_2(object sender, EventArgs e)
-        {
-            try
-            {
-                this.clientsTableAdapter.FillBy(this.uchetDataSet.clients);
-            }
-            catch (System.Exception ex)
-            {
-                System.Windows.Forms.MessageBox.Show(ex.Message);
-            }
-
+            
         }
     }
 }

@@ -32,13 +32,14 @@
             this.saveTovar = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.checkTovar = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.idtovarDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nametovarDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.pricetovarDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pricetovarBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.uchetDataSet = new uchetzakazov.uchetDataSet();
             this.price_tovarTableAdapter = new uchetzakazov.uchetDataSetTableAdapters.price_tovarTableAdapter();
+            this.clientsTableAdapter = new uchetzakazov.uchetDataSetTableAdapters.clientsTableAdapter();
+            this.checkTovar = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nametovar = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.price = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pricetovarBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.uchetDataSet)).BeginInit();
@@ -55,6 +56,7 @@
             this.saveTovar.TabIndex = 0;
             this.saveTovar.Text = "Сохранить";
             this.saveTovar.UseVisualStyleBackColor = false;
+            this.saveTovar.Click += new System.EventHandler(this.saveTovar_Click);
             // 
             // label1
             // 
@@ -73,38 +75,16 @@
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.checkTovar,
-            this.idtovarDataGridViewTextBoxColumn,
-            this.nametovarDataGridViewTextBoxColumn,
-            this.pricetovarDataGridViewTextBoxColumn});
+            this.id,
+            this.nametovar,
+            this.price});
             this.dataGridView1.DataSource = this.pricetovarBindingSource;
             this.dataGridView1.Location = new System.Drawing.Point(15, 30);
             this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView1.Size = new System.Drawing.Size(547, 208);
             this.dataGridView1.TabIndex = 2;
-            // 
-            // checkTovar
-            // 
-            this.checkTovar.HeaderText = " ";
-            this.checkTovar.Name = "checkTovar";
-            // 
-            // idtovarDataGridViewTextBoxColumn
-            // 
-            this.idtovarDataGridViewTextBoxColumn.DataPropertyName = "id_tovar";
-            this.idtovarDataGridViewTextBoxColumn.HeaderText = "id товара";
-            this.idtovarDataGridViewTextBoxColumn.Name = "idtovarDataGridViewTextBoxColumn";
-            this.idtovarDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // nametovarDataGridViewTextBoxColumn
-            // 
-            this.nametovarDataGridViewTextBoxColumn.DataPropertyName = "name_tovar";
-            this.nametovarDataGridViewTextBoxColumn.HeaderText = "Наименование";
-            this.nametovarDataGridViewTextBoxColumn.Name = "nametovarDataGridViewTextBoxColumn";
-            // 
-            // pricetovarDataGridViewTextBoxColumn
-            // 
-            this.pricetovarDataGridViewTextBoxColumn.DataPropertyName = "price_tovar";
-            this.pricetovarDataGridViewTextBoxColumn.HeaderText = "Цена за шт.";
-            this.pricetovarDataGridViewTextBoxColumn.Name = "pricetovarDataGridViewTextBoxColumn";
+            this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
             // 
             // pricetovarBindingSource
             // 
@@ -119,6 +99,34 @@
             // price_tovarTableAdapter
             // 
             this.price_tovarTableAdapter.ClearBeforeFill = true;
+            // 
+            // clientsTableAdapter
+            // 
+            this.clientsTableAdapter.ClearBeforeFill = true;
+            // 
+            // checkTovar
+            // 
+            this.checkTovar.HeaderText = " ";
+            this.checkTovar.Name = "checkTovar";
+            // 
+            // id
+            // 
+            this.id.DataPropertyName = "id";
+            this.id.HeaderText = "id";
+            this.id.Name = "id";
+            this.id.ReadOnly = true;
+            // 
+            // nametovar
+            // 
+            this.nametovar.DataPropertyName = "name_tovar";
+            this.nametovar.HeaderText = "name_tovar";
+            this.nametovar.Name = "nametovar";
+            // 
+            // price
+            // 
+            this.price.DataPropertyName = "price";
+            this.price.HeaderText = "price";
+            this.price.Name = "price";
             // 
             // priceTovar
             // 
@@ -146,12 +154,15 @@
         private System.Windows.Forms.Button saveTovar;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DataGridView dataGridView1;
-        private uchetDataSet uchetDataSet;
+        private System.Windows.Forms.DataGridViewTextBoxColumn idtovarDataGridViewTextBoxColumn;
         private System.Windows.Forms.BindingSource pricetovarBindingSource;
         private uchetDataSetTableAdapters.price_tovarTableAdapter price_tovarTableAdapter;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn checkTovar;
-        private System.Windows.Forms.DataGridViewTextBoxColumn idtovarDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn nametovarDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn pricetovarDataGridViewTextBoxColumn;
+        private uchetDataSetTableAdapters.clientsTableAdapter clientsTableAdapter;
+        public uchetDataSet uchetDataSet;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn checkTovar;
+        private System.Windows.Forms.DataGridViewTextBoxColumn id;
+        private System.Windows.Forms.DataGridViewTextBoxColumn nametovar;
+        private System.Windows.Forms.DataGridViewTextBoxColumn price;
     }
 }

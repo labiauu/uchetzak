@@ -30,17 +30,22 @@
         {
             this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.editClient = new System.Windows.Forms.TextBox();
             this.btnAddUsluga = new System.Windows.Forms.Button();
             this.btnAddTovar = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.idzakazDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.idzakDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.namezakDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.pricezakDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.idclientDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.idtovarDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.idusulgaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.iduserDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.zakazBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.iduslugaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.sostavzakazBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.uchetDataSet = new uchetzakazov.uchetDataSet();
             this.editStatus = new System.Windows.Forms.ComboBox();
             this.statusesBindingSource = new System.Windows.Forms.BindingSource(this.components);
@@ -51,15 +56,15 @@
             this.label3 = new System.Windows.Forms.Label();
             this.editAdress = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.editName = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.statusesTableAdapter = new uchetzakazov.uchetDataSetTableAdapters.statusesTableAdapter();
             this.zakazTableAdapter = new uchetzakazov.uchetDataSetTableAdapters.zakazTableAdapter();
             this.saveChanges = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
+            this.sostavzakazTableAdapter = new uchetzakazov.uchetDataSetTableAdapters.sostavzakazTableAdapter();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.zakazBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sostavzakazBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.uchetDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.statusesBindingSource)).BeginInit();
             this.SuspendLayout();
@@ -67,6 +72,8 @@
             // groupBox1
             // 
             this.groupBox1.BackColor = System.Drawing.Color.Snow;
+            this.groupBox1.Controls.Add(this.textBox1);
+            this.groupBox1.Controls.Add(this.editClient);
             this.groupBox1.Controls.Add(this.btnAddUsluga);
             this.groupBox1.Controls.Add(this.btnAddTovar);
             this.groupBox1.Controls.Add(this.label6);
@@ -79,7 +86,6 @@
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.editAdress);
             this.groupBox1.Controls.Add(this.label2);
-            this.groupBox1.Controls.Add(this.editName);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
@@ -88,6 +94,20 @@
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Изменить данные о клиенте";
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(9, 201);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(261, 26);
+            this.textBox1.TabIndex = 15;
+            // 
+            // editClient
+            // 
+            this.editClient.Location = new System.Drawing.Point(9, 101);
+            this.editClient.Name = "editClient";
+            this.editClient.Size = new System.Drawing.Size(261, 26);
+            this.editClient.TabIndex = 14;
             // 
             // btnAddUsluga
             // 
@@ -99,7 +119,7 @@
             this.btnAddUsluga.TabIndex = 13;
             this.btnAddUsluga.Text = "Добавить услугу";
             this.btnAddUsluga.UseVisualStyleBackColor = false;
-            
+            this.btnAddUsluga.Click += new System.EventHandler(this.btnAddUsluga_Click);
             // 
             // btnAddTovar
             // 
@@ -111,13 +131,13 @@
             this.btnAddTovar.TabIndex = 12;
             this.btnAddTovar.Text = "Добавить товар";
             this.btnAddTovar.UseVisualStyleBackColor = false;
-           
+            this.btnAddTovar.Click += new System.EventHandler(this.btnAddTovar_Click);
             // 
             // label6
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label6.Location = new System.Drawing.Point(300, 22);
+            this.label6.Location = new System.Drawing.Point(273, 22);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(110, 18);
             this.label6.TabIndex = 11;
@@ -129,7 +149,7 @@
             this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.ControlLightLight;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
             dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
@@ -137,23 +157,52 @@
             this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.idzakazDataGridViewTextBoxColumn,
+            this.idzakDataGridViewTextBoxColumn,
+            this.namezakDataGridViewTextBoxColumn,
+            this.pricezakDataGridViewTextBoxColumn,
             this.idclientDataGridViewTextBoxColumn,
             this.idtovarDataGridViewTextBoxColumn,
-            this.idusulgaDataGridViewTextBoxColumn,
-            this.iduserDataGridViewTextBoxColumn});
-            this.dataGridView1.DataSource = this.zakazBindingSource;
-            this.dataGridView1.Location = new System.Drawing.Point(303, 44);
+            this.iduslugaDataGridViewTextBoxColumn});
+            this.dataGridView1.DataSource = this.sostavzakazBindingSource;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle2;
+            this.dataGridView1.Location = new System.Drawing.Point(276, 43);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(402, 233);
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            this.dataGridView1.Size = new System.Drawing.Size(429, 233);
             this.dataGridView1.TabIndex = 10;
             // 
-            // idzakazDataGridViewTextBoxColumn
+            // idzakDataGridViewTextBoxColumn
             // 
-            this.idzakazDataGridViewTextBoxColumn.DataPropertyName = "id_zakaz";
-            this.idzakazDataGridViewTextBoxColumn.HeaderText = "id_zakaz";
-            this.idzakazDataGridViewTextBoxColumn.Name = "idzakazDataGridViewTextBoxColumn";
-            this.idzakazDataGridViewTextBoxColumn.ReadOnly = true;
+            this.idzakDataGridViewTextBoxColumn.DataPropertyName = "id_zak";
+            this.idzakDataGridViewTextBoxColumn.HeaderText = "id_zak";
+            this.idzakDataGridViewTextBoxColumn.Name = "idzakDataGridViewTextBoxColumn";
+            this.idzakDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // namezakDataGridViewTextBoxColumn
+            // 
+            this.namezakDataGridViewTextBoxColumn.DataPropertyName = "name_zak";
+            this.namezakDataGridViewTextBoxColumn.HeaderText = "name_zak";
+            this.namezakDataGridViewTextBoxColumn.Name = "namezakDataGridViewTextBoxColumn";
+            // 
+            // pricezakDataGridViewTextBoxColumn
+            // 
+            this.pricezakDataGridViewTextBoxColumn.DataPropertyName = "price_zak";
+            this.pricezakDataGridViewTextBoxColumn.HeaderText = "price_zak";
+            this.pricezakDataGridViewTextBoxColumn.Name = "pricezakDataGridViewTextBoxColumn";
             // 
             // idclientDataGridViewTextBoxColumn
             // 
@@ -167,22 +216,16 @@
             this.idtovarDataGridViewTextBoxColumn.HeaderText = "id_tovar";
             this.idtovarDataGridViewTextBoxColumn.Name = "idtovarDataGridViewTextBoxColumn";
             // 
-            // idusulgaDataGridViewTextBoxColumn
+            // iduslugaDataGridViewTextBoxColumn
             // 
-            this.idusulgaDataGridViewTextBoxColumn.DataPropertyName = "id_usulga";
-            this.idusulgaDataGridViewTextBoxColumn.HeaderText = "id_usulga";
-            this.idusulgaDataGridViewTextBoxColumn.Name = "idusulgaDataGridViewTextBoxColumn";
+            this.iduslugaDataGridViewTextBoxColumn.DataPropertyName = "id_usluga";
+            this.iduslugaDataGridViewTextBoxColumn.HeaderText = "id_usluga";
+            this.iduslugaDataGridViewTextBoxColumn.Name = "iduslugaDataGridViewTextBoxColumn";
             // 
-            // iduserDataGridViewTextBoxColumn
+            // sostavzakazBindingSource
             // 
-            this.iduserDataGridViewTextBoxColumn.DataPropertyName = "id_user";
-            this.iduserDataGridViewTextBoxColumn.HeaderText = "id_user";
-            this.iduserDataGridViewTextBoxColumn.Name = "iduserDataGridViewTextBoxColumn";
-            // 
-            // zakazBindingSource
-            // 
-            this.zakazBindingSource.DataMember = "zakaz";
-            this.zakazBindingSource.DataSource = this.uchetDataSet;
+            this.sostavzakazBindingSource.DataMember = "sostavzakaz";
+            this.sostavzakazBindingSource.DataSource = this.uchetDataSet;
             // 
             // uchetDataSet
             // 
@@ -235,6 +278,7 @@
             // editNumber
             // 
             this.editNumber.Location = new System.Drawing.Point(9, 151);
+            this.editNumber.Mask = "+79990000000";
             this.editNumber.Name = "editNumber";
             this.editNumber.Size = new System.Drawing.Size(261, 26);
             this.editNumber.TabIndex = 5;
@@ -265,13 +309,6 @@
             this.label2.Size = new System.Drawing.Size(129, 18);
             this.label2.TabIndex = 2;
             this.label2.Text = "Номер телефона";
-            // 
-            // editName
-            // 
-            this.editName.Location = new System.Drawing.Point(9, 101);
-            this.editName.Name = "editName";
-            this.editName.Size = new System.Drawing.Size(261, 26);
-            this.editName.TabIndex = 1;
             // 
             // label1
             // 
@@ -318,6 +355,10 @@
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
+            // sostavzakazTableAdapter
+            // 
+            this.sostavzakazTableAdapter.ClearBeforeFill = true;
+            // 
             // editData
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -330,11 +371,12 @@
             this.Name = "editData";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "editData";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.editData_FormClosed);
             this.Load += new System.EventHandler(this.editData_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.zakazBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sostavzakazBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.uchetDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.statusesBindingSource)).EndInit();
             this.ResumeLayout(false);
@@ -349,26 +391,30 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
-        private uchetDataSet uchetDataSet;
-        private System.Windows.Forms.BindingSource statusesBindingSource;
         private uchetDataSetTableAdapters.statusesTableAdapter statusesTableAdapter;
         private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.BindingSource zakazBindingSource;
         private uchetDataSetTableAdapters.zakazTableAdapter zakazTableAdapter;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.DataGridViewTextBoxColumn idzakazDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn idclientDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn idtovarDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn idusulgaDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn iduserDataGridViewTextBoxColumn;
         private System.Windows.Forms.Button saveChanges;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button btnAddUsluga;
         private System.Windows.Forms.Button btnAddTovar;
-        public System.Windows.Forms.TextBox editName;
         public System.Windows.Forms.TextBox editAdress;
         public System.Windows.Forms.MaskedTextBox editNumber;
         public System.Windows.Forms.TextBox editComment;
         public System.Windows.Forms.ComboBox editStatus;
+        public System.Windows.Forms.TextBox editClient;
+        public System.Windows.Forms.TextBox textBox1;
+        private uchetDataSet uchetDataSet;
+        private uchetDataSetTableAdapters.sostavzakazTableAdapter sostavzakazTableAdapter;
+        private System.Windows.Forms.BindingSource statusesBindingSource;
+        private System.Windows.Forms.DataGridViewTextBoxColumn idnameDataGridViewTextBoxColumn;
+        private System.Windows.Forms.BindingSource sostavzakazBindingSource;
+        private System.Windows.Forms.DataGridViewTextBoxColumn idzakDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn namezakDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn pricezakDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn idclientDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn idtovarDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn iduslugaDataGridViewTextBoxColumn;
     }
 }
