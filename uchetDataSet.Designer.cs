@@ -48,8 +48,6 @@ namespace uchetzakazov {
         
         private global::System.Data.DataRelation relationFK_zakaz_users;
         
-        private global::System.Data.DataRelation relationFK_sostavzakaz_clients;
-        
         private global::System.Data.DataRelation relationFK_zakaz_price_tovar;
         
         private global::System.Data.DataRelation relationFK_zakaz_price_usluga;
@@ -384,7 +382,6 @@ namespace uchetzakazov {
             this.relationFK_users_role = this.Relations["FK_users_role"];
             this.relationFK_zakaz_clients = this.Relations["FK_zakaz_clients"];
             this.relationFK_zakaz_users = this.Relations["FK_zakaz_users"];
-            this.relationFK_sostavzakaz_clients = this.Relations["FK_sostavzakaz_clients"];
             this.relationFK_zakaz_price_tovar = this.Relations["FK_zakaz_price_tovar"];
             this.relationFK_zakaz_price_usluga = this.Relations["FK_zakaz_price_usluga"];
             this.relationFK_sostavzakaz_price_tovar = this.Relations["FK_sostavzakaz_price_tovar"];
@@ -431,10 +428,6 @@ namespace uchetzakazov {
                         this.tableusers.id_userColumn}, new global::System.Data.DataColumn[] {
                         this.tablezakaz.id_userColumn}, false);
             this.Relations.Add(this.relationFK_zakaz_users);
-            this.relationFK_sostavzakaz_clients = new global::System.Data.DataRelation("FK_sostavzakaz_clients", new global::System.Data.DataColumn[] {
-                        this.tableclients.id_clientColumn}, new global::System.Data.DataColumn[] {
-                        this.tablesostavzakaz.id_clientColumn}, false);
-            this.Relations.Add(this.relationFK_sostavzakaz_clients);
             this.relationFK_zakaz_price_tovar = new global::System.Data.DataRelation("FK_zakaz_price_tovar", new global::System.Data.DataColumn[] {
                         this.tableprice_tovar.idColumn}, new global::System.Data.DataColumn[] {
                         this.tablezakaz.id_tovarColumn}, false);
@@ -2859,18 +2852,15 @@ namespace uchetzakazov {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public sostavzakazRow AddsostavzakazRow(string name_zak, double price_zak, clientsRow parentclientsRowByFK_sostavzakaz_clients, price_tovarRow parentprice_tovarRowByFK_sostavzakaz_price_tovar, price_uslugaRow parentprice_uslugaRowByFK_sostavzakaz_price_usluga) {
+            public sostavzakazRow AddsostavzakazRow(string name_zak, double price_zak, int id_client, price_tovarRow parentprice_tovarRowByFK_sostavzakaz_price_tovar, price_uslugaRow parentprice_uslugaRowByFK_sostavzakaz_price_usluga) {
                 sostavzakazRow rowsostavzakazRow = ((sostavzakazRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
                         name_zak,
                         price_zak,
-                        null,
+                        id_client,
                         null,
                         null};
-                if ((parentclientsRowByFK_sostavzakaz_clients != null)) {
-                    columnValuesArray[3] = parentclientsRowByFK_sostavzakaz_clients[0];
-                }
                 if ((parentprice_tovarRowByFK_sostavzakaz_price_tovar != null)) {
                     columnValuesArray[4] = parentprice_tovarRowByFK_sostavzakaz_price_tovar[1];
                 }
@@ -3276,17 +3266,6 @@ namespace uchetzakazov {
                 }
                 else {
                     return ((zakazRow[])(base.GetChildRows(this.Table.ChildRelations["FK_zakaz_clients"])));
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public sostavzakazRow[] GetsostavzakazRows() {
-                if ((this.Table.ChildRelations["FK_sostavzakaz_clients"] == null)) {
-                    return new sostavzakazRow[0];
-                }
-                else {
-                    return ((sostavzakazRow[])(base.GetChildRows(this.Table.ChildRelations["FK_sostavzakaz_clients"])));
                 }
             }
         }
@@ -4073,17 +4052,6 @@ namespace uchetzakazov {
                 }
                 set {
                     this[this.tablesostavzakaz.id_uslugaColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public clientsRow clientsRow {
-                get {
-                    return ((clientsRow)(this.GetParentRow(this.Table.ParentRelations["FK_sostavzakaz_clients"])));
-                }
-                set {
-                    this.SetParentRow(value, this.Table.ParentRelations["FK_sostavzakaz_clients"]);
                 }
             }
             

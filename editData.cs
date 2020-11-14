@@ -16,10 +16,10 @@ namespace uchetzakazov
     
     public partial class editData : Form
     {
-        public int idClient;
-        
-        
-        
+        public static int idClient;
+       
+
+
         public editData()
         {
             InitializeComponent();
@@ -56,10 +56,11 @@ namespace uchetzakazov
 
 
 
-        private void saveChanges_Click(object sender, EventArgs e)
+        public void saveChanges_Click(object sender, EventArgs e)
         {
 
             int idStatus = Convert.ToInt32(editStatus.SelectedIndex)+1;
+
             using (SqlConnection sc = new SqlConnection())
             {
                 sc.ConnectionString = @"Data Source=DESKTOP-43BJ3R7\SQLEXPRESS;Initial Catalog=uchet;Integrated Security=True";
@@ -69,7 +70,7 @@ namespace uchetzakazov
                 {
                     com.CommandText = (@"update clients set name = @clientName, number = @clientNumber, adress = @clientAdress, comment = @clientComment, id_status = @idStatus where id_client = @idClient");
 
-                    //TODO: Change my arbitrary "80" to actual Stock fields' sizes! 
+                    
                     com.Parameters.Add("@idClient", SqlDbType.Int).Value = idClient;
                     com.Parameters.Add("@clientName", SqlDbType.NChar, 255).Value = editClient.Text;
                     com.Parameters.Add("@clientNumber", SqlDbType.NChar, 12).Value = editNumber.Text;

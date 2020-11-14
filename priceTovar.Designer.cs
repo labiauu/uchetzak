@@ -32,14 +32,15 @@
             this.saveTovar = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.pricetovarBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.uchetDataSet = new uchetzakazov.uchetDataSet();
-            this.price_tovarTableAdapter = new uchetzakazov.uchetDataSetTableAdapters.price_tovarTableAdapter();
-            this.clientsTableAdapter = new uchetzakazov.uchetDataSetTableAdapters.clientsTableAdapter();
             this.checkTovar = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nametovar = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.price = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.pricetovarBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.uchetDataSet = new uchetzakazov.uchetDataSet();
+            this.price_tovarTableAdapter = new uchetzakazov.uchetDataSetTableAdapters.price_tovarTableAdapter();
+            this.clientsTableAdapter = new uchetzakazov.uchetDataSetTableAdapters.clientsTableAdapter();
+            this.test = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pricetovarBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.uchetDataSet)).BeginInit();
@@ -86,24 +87,6 @@
             this.dataGridView1.TabIndex = 2;
             this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
             // 
-            // pricetovarBindingSource
-            // 
-            this.pricetovarBindingSource.DataMember = "price_tovar";
-            this.pricetovarBindingSource.DataSource = this.uchetDataSet;
-            // 
-            // uchetDataSet
-            // 
-            this.uchetDataSet.DataSetName = "uchetDataSet";
-            this.uchetDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // price_tovarTableAdapter
-            // 
-            this.price_tovarTableAdapter.ClearBeforeFill = true;
-            // 
-            // clientsTableAdapter
-            // 
-            this.clientsTableAdapter.ClearBeforeFill = true;
-            // 
             // checkTovar
             // 
             this.checkTovar.HeaderText = " ";
@@ -128,12 +111,38 @@
             this.price.HeaderText = "price";
             this.price.Name = "price";
             // 
+            // pricetovarBindingSource
+            // 
+            this.pricetovarBindingSource.DataMember = "price_tovar";
+            this.pricetovarBindingSource.DataSource = this.uchetDataSet;
+            // 
+            // uchetDataSet
+            // 
+            this.uchetDataSet.DataSetName = "uchetDataSet";
+            this.uchetDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // price_tovarTableAdapter
+            // 
+            this.price_tovarTableAdapter.ClearBeforeFill = true;
+            // 
+            // clientsTableAdapter
+            // 
+            this.clientsTableAdapter.ClearBeforeFill = true;
+            // 
+            // test
+            // 
+            this.test.Location = new System.Drawing.Point(294, 262);
+            this.test.Name = "test";
+            this.test.Size = new System.Drawing.Size(100, 20);
+            this.test.TabIndex = 3;
+            // 
             // priceTovar
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.ClientSize = new System.Drawing.Size(576, 295);
+            this.Controls.Add(this.test);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.saveTovar);
@@ -164,5 +173,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn id;
         private System.Windows.Forms.DataGridViewTextBoxColumn nametovar;
         private System.Windows.Forms.DataGridViewTextBoxColumn price;
+        public System.Windows.Forms.TextBox test;
     }
 }

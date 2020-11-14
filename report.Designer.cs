@@ -39,6 +39,7 @@
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.saveFile = new System.Windows.Forms.SaveFileDialog();
+            this.reportViewer = new Microsoft.Reporting.WinForms.ReportViewer();
             this.SuspendLayout();
             // 
             // label1
@@ -148,6 +149,13 @@
             // 
             this.saveFile.FileOk += new System.ComponentModel.CancelEventHandler(this.saveFileDialog1_FileOk);
             // 
+            // reportViewer
+            // 
+            this.reportViewer.Location = new System.Drawing.Point(0, 0);
+            this.reportViewer.Name = "ReportViewer";
+            this.reportViewer.Size = new System.Drawing.Size(396, 246);
+            this.reportViewer.TabIndex = 0;
+            // 
             // reportForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -185,5 +193,6 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.SaveFileDialog saveFile;
+        private Microsoft.Reporting.WinForms.ReportViewer reportViewer;
     }
 }

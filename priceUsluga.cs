@@ -16,9 +16,10 @@ namespace uchetzakazov
     public partial class priceUsluga : Form
         
         
-
+       
     {
         editData editData = new editData();
+        int idClientUsluga;
         public priceUsluga()
         {
             InitializeComponent();
@@ -32,6 +33,7 @@ namespace uchetzakazov
             this.price_uslugaTableAdapter.Fill(this.uchetDataSet.price_usluga);
             // TODO: данная строка кода позволяет загрузить данные в таблицу "uchetDataSet.price_usluga". При необходимости она может быть перемещена или удалена.
             this.price_uslugaTableAdapter.Fill(this.uchetDataSet.price_usluga);
+            idClientUsluga = editData.idClient;
 
         }
 
@@ -51,11 +53,12 @@ namespace uchetzakazov
                     string constring = @"Data Source=DESKTOP-43BJ3R7\SQLEXPRESS;Initial Catalog=uchet;Integrated Security=True";
                     using (SqlConnection con = new SqlConnection(constring))
                     {
-                        using (SqlCommand cmd = new SqlCommand(@"INSERT INTO sostavzakaz (name_zak, price_zak, id_usluga) VALUES(@nameUsl, @priceUsl, @idUsl)", con))
+                        using (SqlCommand cmd = new SqlCommand(@"INSERT INTO sostavzakaz (name_zak, price_zak, id_usluga, id_client) VALUES(@nameUsl, @priceUsl, @idUsl, @idClient)", con))
                         {
                             cmd.Parameters.AddWithValue("@nameUsl", row.Cells["nameusluga"].Value);
                             cmd.Parameters.AddWithValue("@priceUsl", row.Cells["price"].Value);
                             cmd.Parameters.AddWithValue("@idUsl", row.Cells["id"].Value);
+                            cmd.Parameters.Add("@idClient", SqlDbType.Int).Value = idClientUsluga;
                             con.Open();
                             cmd.ExecuteNonQuery();
                             con.Close();

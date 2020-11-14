@@ -18,6 +18,7 @@ namespace uchetzakazov
         editData editData = new editData();
         orderForm orderForm = new orderForm();
         reportForm reportForm = new reportForm();
+        public int idInt;
         public mainForm()
         {
             InitializeComponent();
@@ -44,7 +45,7 @@ namespace uchetzakazov
 
         }
 
-        private void dataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        public void dataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         { 
             
                 if (dataGridView1.CurrentRow != null)
@@ -54,16 +55,17 @@ namespace uchetzakazov
                 string numberClient = dataGridView1.SelectedRows[0].Cells[2].Value.ToString(); 
                 string adressClient = dataGridView1.SelectedRows[0].Cells[3].Value.ToString();
                 string commentClient = dataGridView1.SelectedRows[0].Cells[4].Value.ToString();
-                //string statusId = dataGridView1.SelectedRows[0].Cells[5].Value.ToString();
-                //int statusItem = int.Parse(statusId);
                 
-                
+
+
                 editData.idClient = int.Parse(id);
                 editData.editClient.Text = nameClient;
                 editData.editNumber.Text= numberClient;
                 editData.textBox1.Text = adressClient;
                 editData.editComment.Text = commentClient;
-                //editData.editStatus.DisplayMember = statusId;
+                editData.textBoxId.Text = id;
+                idInt = int.Parse(id);
+                
  
                 }
             editData.Show();
@@ -88,6 +90,42 @@ namespace uchetzakazov
         private void mainForm_FormClosed(object sender, FormClosedEventArgs e)
         {
             
+        }
+
+        private void UsersToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FormUsers formUsers = new FormUsers();
+            formUsers.Show();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            for (int i = 0; i < dataGridView1.ColumnCount; i++)
+                 {
+                     dataGridView1.Rows[i].Selected = false;
+                     for (int j = 0; j < dataGridView1.ColumnCount; j++)
+                         if (dataGridView1.Rows[i].Cells[j].Value != null)
+                             if (dataGridView1.Rows[i].Cells[j].Value.ToString().Contains(clientBox.Text))
+                             {
+                                 dataGridView1.Rows[i].Selected = true;
+                                 break;
+                             }
+                 }
+            
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            for (int i = 0; i < dataGridView1.ColumnCount; i++)
+            {
+                dataGridView1.Rows[i].Selected = false;
+            }
+            clientBox.Clear();
+            adressBox.Clear();
+            comboBox1.SelectionLength = 0;
+            datePick.Value = DateTime.Today;
+
+
         }
     }
 }

@@ -16,6 +16,7 @@ namespace uchetzakazov
     public partial class priceTovar : Form
     {
         editData editData = new editData();
+        int idClientTovar;
         
         public priceTovar()
         {
@@ -31,6 +32,10 @@ namespace uchetzakazov
             // TODO: данная строка кода позволяет загрузить данные в таблицу "uchetDataSet.price_tovar". При необходимости она может быть перемещена или удалена.
             this.price_tovarTableAdapter.Fill(this.uchetDataSet.price_tovar);
 
+           
+            idClientTovar = editData.idClient;
+            //test.Text = idClientText.ToString();
+               
         }
 
         private void addTovar_MouseEnter(object sender, EventArgs e)
@@ -48,6 +53,7 @@ namespace uchetzakazov
 
             {
                 int inserted = 0;
+                
                 foreach (DataGridViewRow row in dataGridView1.Rows)
                 {
                     bool isSelected = Convert.ToBoolean(row.Cells["checkTovar"].Value);
@@ -56,11 +62,15 @@ namespace uchetzakazov
                         string constring = @"Data Source=DESKTOP-43BJ3R7\SQLEXPRESS;Initial Catalog=uchet;Integrated Security=True";
                         using (SqlConnection con = new SqlConnection(constring))
                         {
-                            using (SqlCommand cmd = new SqlCommand(@"INSERT INTO sostavzakaz (name_zak, price_zak, id_tovar) VALUES(@nameTov, @priceTov, @idTov)", con))
+                            using (SqlCommand cmd = new SqlCommand(@"INSERT INTO sostavzakaz (name_zak, price_zak ,id_tovar, id_client) VALUES(@nameTov, @priceTov ,@idTov, @idClient)", con))
                             {
                                 cmd.Parameters.AddWithValue("@nameTov", row.Cells["nametovar"].Value);
                                 cmd.Parameters.AddWithValue("@priceTov", row.Cells["price"].Value);
                                 cmd.Parameters.AddWithValue("@idTov", row.Cells["id"].Value);
+                                cmd.Parameters.Add("@idClient", SqlDbType.Int).Value = idClientTovar;
+
+                                
+
                                 con.Open();
                                 cmd.ExecuteNonQuery();
                                 con.Close();
@@ -80,8 +90,9 @@ namespace uchetzakazov
                 editData.Show();
                 this.Close();
             }
-            this.Close();
-            editData.Show();
+            
         }
+
+        
     }
 }
