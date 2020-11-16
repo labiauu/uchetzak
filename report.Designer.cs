@@ -38,8 +38,7 @@
             this.pdfRadio = new System.Windows.Forms.RadioButton();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
-            this.saveFile = new System.Windows.Forms.SaveFileDialog();
-            this.reportViewer = new Microsoft.Reporting.WinForms.ReportViewer();
+            this.saveFileDialog = new System.Windows.Forms.SaveFileDialog();
             this.SuspendLayout();
             // 
             // label1
@@ -145,16 +144,9 @@
             this.button2.Text = "Отменить";
             this.button2.UseVisualStyleBackColor = true;
             // 
-            // saveFile
+            // saveFileDialog
             // 
-            this.saveFile.FileOk += new System.ComponentModel.CancelEventHandler(this.saveFileDialog1_FileOk);
-            // 
-            // reportViewer
-            // 
-            this.reportViewer.Location = new System.Drawing.Point(0, 0);
-            this.reportViewer.Name = "ReportViewer";
-            this.reportViewer.Size = new System.Drawing.Size(396, 246);
-            this.reportViewer.TabIndex = 0;
+            this.saveFileDialog.FileOk += new System.ComponentModel.CancelEventHandler(this.saveFileDialog1_FileOk);
             // 
             // reportForm
             // 
@@ -175,6 +167,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "reportForm";
             this.Text = "Скачивание отчета";
+            this.Load += new System.EventHandler(this.reportForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -192,7 +185,6 @@
         private System.Windows.Forms.RadioButton pdfRadio;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.SaveFileDialog saveFile;
-        private Microsoft.Reporting.WinForms.ReportViewer reportViewer;
+        private System.Windows.Forms.SaveFileDialog saveFileDialog;
     }
 }

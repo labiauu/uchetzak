@@ -72,11 +72,13 @@ namespace uchetzakazov
             {
                 MessageBox.Show(string.Format("{0} строк добавлено.", inserted), "Message");
             }
-        
 
 
-        editData.Show();
+            editData.dataGridView1.Update();
+            editData.dataGridView1.Refresh();
+            editData.Show();
             this.Close();
+
         }
     }
 }

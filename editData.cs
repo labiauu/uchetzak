@@ -17,6 +17,7 @@ namespace uchetzakazov
     public partial class editData : Form
     {
         public static int idClient;
+        int idClientZak;
        
 
 
@@ -44,6 +45,29 @@ namespace uchetzakazov
             this.zakazTableAdapter.Fill(this.uchetDataSet.zakaz);
             // TODO: данная строка кода позволяет загрузить данные в таблицу "uchetDataSet.statuses". При необходимости она может быть перемещена или удалена.
             this.statusesTableAdapter.Fill(this.uchetDataSet.statuses);
+            idClientZak = idClient;
+            textBoxId.Text = idClientZak.ToString();
+            using (SqlConnection scZak = new SqlConnection())
+            {
+                scZak.ConnectionString = @"Data Source=DESKTOP-43BJ3R7\SQLEXPRESS;Initial Catalog=uchet;Integrated Security=True";
+                scZak.Open();
+
+                using (SqlCommand comZak = new SqlCommand("SELECT * FROM sostavzakaz where id_client = @idClientZak", scZak))
+                {
+                    
+                    comZak.Parameters.Add("@idClientZak", SqlDbType.Int).Value = idClientZak;
+                    
+
+                    SqlDataAdapter zakAdapter = new SqlDataAdapter(comZak);
+                    DataSet zakDataSet = new DataSet();
+                    zakAdapter.Fill(zakDataSet);
+                    dataGridView1.DataSource = zakDataSet;
+
+                }
+                scZak.Close();
+
+            }
+
 
         }
 
@@ -95,7 +119,7 @@ namespace uchetzakazov
         {
             priceTovar priceTovar = new priceTovar();
             priceTovar.Show();
-            this.Close();
+            this.Hide();
             
         }
 
@@ -103,7 +127,7 @@ namespace uchetzakazov
         {
             priceUsluga priceUsluga = new priceUsluga();
             priceUsluga.Show();
-            this.Close();
+            this.Hide();
         }
 
         private void editData_FormClosed(object sender, FormClosedEventArgs e)

@@ -68,9 +68,6 @@ namespace uchetzakazov
                                 cmd.Parameters.AddWithValue("@priceTov", row.Cells["price"].Value);
                                 cmd.Parameters.AddWithValue("@idTov", row.Cells["id"].Value);
                                 cmd.Parameters.Add("@idClient", SqlDbType.Int).Value = idClientTovar;
-
-                                
-
                                 con.Open();
                                 cmd.ExecuteNonQuery();
                                 con.Close();
@@ -86,7 +83,8 @@ namespace uchetzakazov
                 }
 
 
-
+                editData.dataGridView1.Update();
+                editData.dataGridView1.Refresh();
                 editData.Show();
                 this.Close();
             }

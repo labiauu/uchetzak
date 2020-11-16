@@ -39,7 +39,7 @@
             this.reportButton = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.idclientDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nameClient = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.numberDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.adressDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.commentDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -61,7 +61,7 @@
             this.clientsTableAdapter = new uchetzakazov.uchetDataSetTableAdapters.clientsTableAdapter();
             this.UsersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
+            this.button3 = new System.Windows.Forms.Button();
             clientsBindingSource = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(clientsBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.uchetDataSet)).BeginInit();
@@ -141,6 +141,7 @@
             // 
             // dataGridView1
             // 
+            this.dataGridView1.AllowUserToAddRows = false;
             this.dataGridView1.AutoGenerateColumns = false;
             this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.ControlLightLight;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
@@ -154,7 +155,7 @@
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.idclientDataGridViewTextBoxColumn,
-            this.nameDataGridViewTextBoxColumn,
+            this.nameClient,
             this.numberDataGridViewTextBoxColumn,
             this.adressDataGridViewTextBoxColumn,
             this.commentDataGridViewTextBoxColumn,
@@ -162,8 +163,10 @@
             this.createdateDataGridViewTextBoxColumn});
             this.dataGridView1.DataSource = clientsBindingSource;
             this.dataGridView1.GridColor = System.Drawing.SystemColors.ControlLightLight;
+            this.dataGridView1.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.dataGridView1.Location = new System.Drawing.Point(12, 107);
             this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.ReadOnly = true;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView1.ShowEditingIcon = false;
             this.dataGridView1.Size = new System.Drawing.Size(743, 392);
@@ -178,41 +181,47 @@
             this.idclientDataGridViewTextBoxColumn.Name = "idclientDataGridViewTextBoxColumn";
             this.idclientDataGridViewTextBoxColumn.ReadOnly = true;
             // 
-            // nameDataGridViewTextBoxColumn
+            // nameClient
             // 
-            this.nameDataGridViewTextBoxColumn.DataPropertyName = "name";
-            this.nameDataGridViewTextBoxColumn.HeaderText = "Клиент";
-            this.nameDataGridViewTextBoxColumn.Name = "nameDataGridViewTextBoxColumn";
+            this.nameClient.DataPropertyName = "name";
+            this.nameClient.HeaderText = "Клиент";
+            this.nameClient.Name = "nameClient";
+            this.nameClient.ReadOnly = true;
             // 
             // numberDataGridViewTextBoxColumn
             // 
             this.numberDataGridViewTextBoxColumn.DataPropertyName = "number";
             this.numberDataGridViewTextBoxColumn.HeaderText = "Номер";
             this.numberDataGridViewTextBoxColumn.Name = "numberDataGridViewTextBoxColumn";
+            this.numberDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // adressDataGridViewTextBoxColumn
             // 
             this.adressDataGridViewTextBoxColumn.DataPropertyName = "adress";
             this.adressDataGridViewTextBoxColumn.HeaderText = "Адрес";
             this.adressDataGridViewTextBoxColumn.Name = "adressDataGridViewTextBoxColumn";
+            this.adressDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // commentDataGridViewTextBoxColumn
             // 
             this.commentDataGridViewTextBoxColumn.DataPropertyName = "comment";
             this.commentDataGridViewTextBoxColumn.HeaderText = "Комментарий";
             this.commentDataGridViewTextBoxColumn.Name = "commentDataGridViewTextBoxColumn";
+            this.commentDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // idstatusDataGridViewTextBoxColumn
             // 
             this.idstatusDataGridViewTextBoxColumn.DataPropertyName = "id_status";
             this.idstatusDataGridViewTextBoxColumn.HeaderText = "id_status";
             this.idstatusDataGridViewTextBoxColumn.Name = "idstatusDataGridViewTextBoxColumn";
+            this.idstatusDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // createdateDataGridViewTextBoxColumn
             // 
             this.createdateDataGridViewTextBoxColumn.DataPropertyName = "create_date";
             this.createdateDataGridViewTextBoxColumn.HeaderText = "Дата создания";
             this.createdateDataGridViewTextBoxColumn.Name = "createdateDataGridViewTextBoxColumn";
+            this.createdateDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // groupBox1
             // 
@@ -279,6 +288,7 @@
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(194, 26);
             this.comboBox1.TabIndex = 8;
+            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
             // statusesBindingSource
             // 
@@ -298,6 +308,7 @@
             this.adressBox.Name = "adressBox";
             this.adressBox.Size = new System.Drawing.Size(194, 24);
             this.adressBox.TabIndex = 5;
+            this.adressBox.TextChanged += new System.EventHandler(this.adressBox_TextChanged);
             // 
             // clientBox
             // 
@@ -305,6 +316,7 @@
             this.clientBox.Name = "clientBox";
             this.clientBox.Size = new System.Drawing.Size(194, 24);
             this.clientBox.TabIndex = 4;
+            this.clientBox.TextChanged += new System.EventHandler(this.clientBox_TextChanged);
             // 
             // label5
             // 
@@ -368,12 +380,15 @@
             this.menuStrip1.TabIndex = 7;
             this.menuStrip1.Text = "menuStrip1";
             // 
-            // reportViewer1
+            // button3
             // 
-            this.reportViewer1.Location = new System.Drawing.Point(0, 0);
-            this.reportViewer1.Name = "ReportViewer";
-            this.reportViewer1.Size = new System.Drawing.Size(396, 246);
-            this.reportViewer1.TabIndex = 0;
+            this.button3.Location = new System.Drawing.Point(416, 65);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(75, 23);
+            this.button3.TabIndex = 8;
+            this.button3.Text = "button3";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // mainForm
             // 
@@ -383,6 +398,7 @@
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.ClientSize = new System.Drawing.Size(980, 539);
+            this.Controls.Add(this.button3);
             this.Controls.Add(this.menuStrip1);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.dataGridView1);
@@ -431,16 +447,17 @@
         private uchetDataSetTableAdapters.statusesTableAdapter statusesTableAdapter;
         private uchetDataSetTableAdapters.clientsTableAdapter clientsTableAdapter;
         public System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.BindingSource statusesBindingSource;
+        private System.Windows.Forms.ToolStripMenuItem UsersToolStripMenuItem;
+        private System.Windows.Forms.MenuStrip menuStrip1;
+        
         private System.Windows.Forms.DataGridViewTextBoxColumn idclientDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn nameDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn nameClient;
         private System.Windows.Forms.DataGridViewTextBoxColumn numberDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn adressDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn commentDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn idstatusDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn createdateDataGridViewTextBoxColumn;
-        private System.Windows.Forms.BindingSource statusesBindingSource;
-        private System.Windows.Forms.ToolStripMenuItem UsersToolStripMenuItem;
-        private System.Windows.Forms.MenuStrip menuStrip1;
-        private Microsoft.Reporting.WinForms.ReportViewer reportViewer1;
+        private System.Windows.Forms.Button button3;
     }
 }
