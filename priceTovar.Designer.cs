@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(priceTovar));
             this.saveTovar = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
@@ -48,12 +49,16 @@
             // 
             // saveTovar
             // 
-            this.saveTovar.BackColor = System.Drawing.Color.YellowGreen;
-            this.saveTovar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.saveTovar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.saveTovar.Location = new System.Drawing.Point(15, 252);
+            this.saveTovar.BackColor = System.Drawing.Color.SteelBlue;
+            this.saveTovar.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
+            this.saveTovar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.DodgerBlue;
+            this.saveTovar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DodgerBlue;
+            this.saveTovar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.saveTovar.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.saveTovar.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.saveTovar.Location = new System.Drawing.Point(16, 246);
             this.saveTovar.Name = "saveTovar";
-            this.saveTovar.Size = new System.Drawing.Size(111, 28);
+            this.saveTovar.Size = new System.Drawing.Size(109, 28);
             this.saveTovar.TabIndex = 0;
             this.saveTovar.Text = "Сохранить";
             this.saveTovar.UseVisualStyleBackColor = false;
@@ -62,10 +67,10 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label1.Location = new System.Drawing.Point(12, 9);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(204, 18);
+            this.label1.Size = new System.Drawing.Size(221, 20);
             this.label1.TabIndex = 1;
             this.label1.Text = "Выберите товары из списка";
             // 
@@ -80,7 +85,7 @@
             this.nametovar,
             this.price});
             this.dataGridView1.DataSource = this.pricetovarBindingSource;
-            this.dataGridView1.Location = new System.Drawing.Point(15, 30);
+            this.dataGridView1.Location = new System.Drawing.Point(16, 32);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView1.Size = new System.Drawing.Size(547, 208);
@@ -102,13 +107,13 @@
             // nametovar
             // 
             this.nametovar.DataPropertyName = "name_tovar";
-            this.nametovar.HeaderText = "name_tovar";
+            this.nametovar.HeaderText = "Наименование";
             this.nametovar.Name = "nametovar";
             // 
             // price
             // 
             this.price.DataPropertyName = "price";
-            this.price.HeaderText = "price";
+            this.price.HeaderText = "Цена р/шт.";
             this.price.Name = "price";
             // 
             // pricetovarBindingSource
@@ -131,7 +136,7 @@
             // 
             // test
             // 
-            this.test.Location = new System.Drawing.Point(294, 262);
+            this.test.Location = new System.Drawing.Point(464, 254);
             this.test.Name = "test";
             this.test.Size = new System.Drawing.Size(100, 20);
             this.test.TabIndex = 3;
@@ -146,9 +151,10 @@
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.saveTovar);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "priceTovar";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "priceTovar";
+            this.Text = "Прайс-лист товаров";
             this.Load += new System.EventHandler(this.priceTovar_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pricetovarBindingSource)).EndInit();
@@ -169,10 +175,10 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn pricetovarDataGridViewTextBoxColumn;
         private uchetDataSetTableAdapters.clientsTableAdapter clientsTableAdapter;
         public uchetDataSet uchetDataSet;
+        public System.Windows.Forms.TextBox test;
         private System.Windows.Forms.DataGridViewCheckBoxColumn checkTovar;
         private System.Windows.Forms.DataGridViewTextBoxColumn id;
         private System.Windows.Forms.DataGridViewTextBoxColumn nametovar;
         private System.Windows.Forms.DataGridViewTextBoxColumn price;
-        public System.Windows.Forms.TextBox test;
     }
 }

@@ -31,23 +31,22 @@
             this.components = new System.ComponentModel.Container();
             System.Windows.Forms.BindingSource clientsBindingSource;
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(mainForm));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.uchetDataSet = new uchetzakazov.uchetDataSet();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.orderButton = new System.Windows.Forms.Button();
-            this.reportButton = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.idclientDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nameClient = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.numberDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.adressDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.commentDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.idstatusDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.status_name = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.createdateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.resetFilter = new System.Windows.Forms.LinkLabel();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.statusesBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.datePick = new System.Windows.Forms.DateTimePicker();
@@ -62,6 +61,8 @@
             this.UsersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.button3 = new System.Windows.Forms.Button();
+            this.id_status = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.uchetDataSet1 = new uchetzakazov.uchetDataSet();
             clientsBindingSource = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(clientsBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.uchetDataSet)).BeginInit();
@@ -70,6 +71,7 @@
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.statusesBindingSource)).BeginInit();
             this.menuStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.uchetDataSet1)).BeginInit();
             this.SuspendLayout();
             // 
             // clientsBindingSource
@@ -124,34 +126,19 @@
             this.orderButton.UseVisualStyleBackColor = false;
             this.orderButton.Click += new System.EventHandler(this.orderButton_Click);
             // 
-            // reportButton
-            // 
-            this.reportButton.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.reportButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Gray;
-            this.reportButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gray;
-            this.reportButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.reportButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.reportButton.Location = new System.Drawing.Point(174, 68);
-            this.reportButton.Name = "reportButton";
-            this.reportButton.Size = new System.Drawing.Size(156, 33);
-            this.reportButton.TabIndex = 3;
-            this.reportButton.Text = "Скачать отчет";
-            this.reportButton.UseVisualStyleBackColor = true;
-            this.reportButton.Click += new System.EventHandler(this.reportButton_Click);
-            // 
             // dataGridView1
             // 
             this.dataGridView1.AllowUserToAddRows = false;
             this.dataGridView1.AutoGenerateColumns = false;
             this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.ControlLightLight;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.idclientDataGridViewTextBoxColumn,
@@ -159,7 +146,8 @@
             this.numberDataGridViewTextBoxColumn,
             this.adressDataGridViewTextBoxColumn,
             this.commentDataGridViewTextBoxColumn,
-            this.idstatusDataGridViewTextBoxColumn,
+            this.status_name,
+            this.dataGridViewTextBoxColumn1,
             this.createdateDataGridViewTextBoxColumn});
             this.dataGridView1.DataSource = clientsBindingSource;
             this.dataGridView1.GridColor = System.Drawing.SystemColors.ControlLightLight;
@@ -209,12 +197,19 @@
             this.commentDataGridViewTextBoxColumn.Name = "commentDataGridViewTextBoxColumn";
             this.commentDataGridViewTextBoxColumn.ReadOnly = true;
             // 
-            // idstatusDataGridViewTextBoxColumn
+            // status_name
             // 
-            this.idstatusDataGridViewTextBoxColumn.DataPropertyName = "id_status";
-            this.idstatusDataGridViewTextBoxColumn.HeaderText = "id_status";
-            this.idstatusDataGridViewTextBoxColumn.Name = "idstatusDataGridViewTextBoxColumn";
-            this.idstatusDataGridViewTextBoxColumn.ReadOnly = true;
+            this.status_name.DataPropertyName = "status_name";
+            this.status_name.HeaderText = "Статус";
+            this.status_name.Name = "status_name";
+            this.status_name.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.DataPropertyName = "id_status";
+            this.dataGridViewTextBoxColumn1.HeaderText = "id_status";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.ReadOnly = true;
             // 
             // createdateDataGridViewTextBoxColumn
             // 
@@ -226,8 +221,7 @@
             // groupBox1
             // 
             this.groupBox1.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.groupBox1.Controls.Add(this.button2);
-            this.groupBox1.Controls.Add(this.button1);
+            this.groupBox1.Controls.Add(this.resetFilter);
             this.groupBox1.Controls.Add(this.comboBox1);
             this.groupBox1.Controls.Add(this.datePick);
             this.groupBox1.Controls.Add(this.adressBox);
@@ -239,43 +233,22 @@
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.groupBox1.Location = new System.Drawing.Point(761, 107);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(212, 274);
+            this.groupBox1.Size = new System.Drawing.Size(212, 259);
             this.groupBox1.TabIndex = 5;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Фильтр";
             // 
-            // button2
+            // resetFilter
             // 
-            this.button2.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.button2.FlatAppearance.BorderColor = System.Drawing.Color.Silver;
-            this.button2.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Gray;
-            this.button2.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gray;
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button2.Location = new System.Drawing.Point(108, 217);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(96, 33);
-            this.button2.TabIndex = 10;
-            this.button2.Text = "Отменить";
-            this.button2.UseVisualStyleBackColor = false;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
-            // 
-            // button1
-            // 
-            this.button1.BackColor = System.Drawing.Color.SteelBlue;
-            this.button1.FlatAppearance.BorderColor = System.Drawing.Color.Silver;
-            this.button1.FlatAppearance.MouseDownBackColor = System.Drawing.Color.DodgerBlue;
-            this.button1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DodgerBlue;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.button1.Location = new System.Drawing.Point(10, 217);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(96, 33);
-            this.button1.TabIndex = 9;
-            this.button1.Text = "Применить";
-            this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.resetFilter.AutoSize = true;
+            this.resetFilter.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.resetFilter.Location = new System.Drawing.Point(127, 219);
+            this.resetFilter.Name = "resetFilter";
+            this.resetFilter.Size = new System.Drawing.Size(76, 18);
+            this.resetFilter.TabIndex = 11;
+            this.resetFilter.TabStop = true;
+            this.resetFilter.Text = "Сбросить";
+            this.resetFilter.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.resetFilter_LinkClicked);
             // 
             // comboBox1
             // 
@@ -301,6 +274,7 @@
             this.datePick.Name = "datePick";
             this.datePick.Size = new System.Drawing.Size(194, 24);
             this.datePick.TabIndex = 7;
+            this.datePick.ValueChanged += new System.EventHandler(this.datePick_ValueChanged);
             // 
             // adressBox
             // 
@@ -382,13 +356,29 @@
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(416, 65);
+            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button3.Image = ((System.Drawing.Image)(resources.GetObject("button3.Image")));
+            this.button3.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button3.Location = new System.Drawing.Point(174, 68);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(75, 23);
+            this.button3.Size = new System.Drawing.Size(156, 33);
             this.button3.TabIndex = 8;
-            this.button3.Text = "button3";
+            this.button3.Text = " Скачать отчет";
             this.button3.UseVisualStyleBackColor = true;
             this.button3.Click += new System.EventHandler(this.button3_Click);
+            // 
+            // id_status
+            // 
+            this.id_status.DataPropertyName = "id_status";
+            this.id_status.HeaderText = "id_status";
+            this.id_status.Name = "id_status";
+            this.id_status.ReadOnly = true;
+            // 
+            // uchetDataSet1
+            // 
+            this.uchetDataSet1.DataSetName = "uchetDataSet";
+            this.uchetDataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // mainForm
             // 
@@ -402,10 +392,10 @@
             this.Controls.Add(this.menuStrip1);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.dataGridView1);
-            this.Controls.Add(this.reportButton);
             this.Controls.Add(this.orderButton);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.pictureBox1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "mainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -421,6 +411,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.statusesBindingSource)).EndInit();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.uchetDataSet1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -431,10 +422,7 @@
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button orderButton;
-        private System.Windows.Forms.Button reportButton;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.DateTimePicker datePick;
         private System.Windows.Forms.TextBox adressBox;
@@ -445,19 +433,22 @@
         private System.Windows.Forms.Label label2;
         private uchetDataSet uchetDataSet;
         private uchetDataSetTableAdapters.statusesTableAdapter statusesTableAdapter;
-        private uchetDataSetTableAdapters.clientsTableAdapter clientsTableAdapter;
         public System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.BindingSource statusesBindingSource;
         private System.Windows.Forms.ToolStripMenuItem UsersToolStripMenuItem;
         private System.Windows.Forms.MenuStrip menuStrip1;
-        
+        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn id_status;
+        public uchetDataSetTableAdapters.clientsTableAdapter clientsTableAdapter;
+        private uchetDataSet uchetDataSet1;
         private System.Windows.Forms.DataGridViewTextBoxColumn idclientDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn nameClient;
         private System.Windows.Forms.DataGridViewTextBoxColumn numberDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn adressDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn commentDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn idstatusDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn status_name;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn createdateDataGridViewTextBoxColumn;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.LinkLabel resetFilter;
     }
 }

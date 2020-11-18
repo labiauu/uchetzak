@@ -20,7 +20,7 @@ namespace uchetzakazov
     {
         editData editData = new editData();
         orderForm orderForm = new orderForm();
-        reportForm reportForm = new reportForm();
+       
         public int idInt;
         public mainForm()
         {
@@ -35,22 +35,36 @@ namespace uchetzakazov
 
         private void reportButton_Click(object sender, EventArgs e)
         {
-            reportForm.Show();
-            reportForm.Activate();
+            
 
         }
 
 
         private void mainForm_Load(object sender, EventArgs e)
         {
-            // TODO: данная строка кода позволяет загрузить данные в таблицу "uchetDataSet.clients". При необходимости она может быть перемещена или удалена.
-            this.clientsTableAdapter.Fill(this.uchetDataSet.clients);
+            // TODO: данная строка кода позволяет загрузить данные в таблицу "uchetDataSet1.clients". При необходимости она может быть перемещена или удалена.
+            this.clientsTableAdapter.Fill(this.uchetDataSet1.clients);
+            // TODO: данная строка кода позволяет загрузить данные в таблицу "uchetDataSet.zakaz". При необходимости она может быть перемещена или удалена.
+            //this.zakazTableAdapter.Fill(this.uchetDataSet.zakaz);
             // TODO: данная строка кода позволяет загрузить данные в таблицу "uchetDataSet.statuses". При необходимости она может быть перемещена или удалена.
             this.statusesTableAdapter.Fill(this.uchetDataSet.statuses);
+            // TODO: данная строка кода позволяет загрузить данные в таблицу "uchetDataSet.clients". При необходимости она может быть перемещена или удалена.
+            this.clientsTableAdapter.Fill(this.uchetDataSet.clients);
+            
             this.dataGridView1.Sort(this.dataGridView1.Columns[0], ListSortDirection.Descending);
             for (int i = 0; i < dataGridView1.RowCount; i++)
             {
                 dataGridView1.Rows[i].Selected = false;
+            }
+
+            if (authForm.role == 2)
+            {
+                menuStrip1.Visible = true;
+
+            }
+            else
+            {
+                menuStrip1.Visible = false;
             }
 
         }
@@ -108,75 +122,38 @@ namespace uchetzakazov
             formUsers.Show();
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            /* for (int i = 0; i < dataGridView1.ColumnCount; i++)
-                  {
-                      dataGridView1.Rows[i].Selected = false;
-                      for (int j = 0; j < dataGridView1.ColumnCount; j++)
-                          if (dataGridView1.Rows[i].Cells[j].Value != null)
-                              if (dataGridView1.Rows[i].Cells[j].Value.ToString().Contains(clientBox.Text))
-                              {
-                                  dataGridView1.Rows[i].Selected = true;
-                                  break;
-                              }
-                  }*/
-            string searchClient = clientBox.Text;
-            string searchAdress = adressBox.Text;
-            string searchStatus = comboBox1.Text;
-            string searchDate = datePick.Value.ToString();
-            int dlinna = dataGridView1.ColumnCount;
+        
+        
 
-            for (int i = 0; i < dataGridView1.RowCount; i++)
-            {
-                dataGridView1.Rows[i].Selected = false;
-                if (dataGridView1.Rows[i].Cells[1].Value != null)
-                    if (dataGridView1.Rows[i].Cells[1].Value.ToString().Contains(clientBox.Text))
-                    {
-                        dataGridView1.Rows[i].Selected = true;
-
-                    }
-            }
-        }
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-            for (int i = 0; i < dataGridView1.RowCount; i++)
-            {
-                dataGridView1.Rows[i].Selected = false;
-            }
-            clientBox.Clear();
-            adressBox.Clear();
-            comboBox1.SelectionLength = 0;
-            datePick.Value = DateTime.Today;
-
-
-        }
+        
 
         private void clientBox_TextChanged(object sender, EventArgs e)
         {
-            BindingSource bs = new BindingSource();
-            bs.DataSource = dataGridView1.DataSource;
-            bs.Filter = "name Like '%" + clientBox.Text + "%'";
-            dataGridView1.DataSource = bs;
+            BindingSource bsClient = new BindingSource();
+            bsClient.DataSource = dataGridView1.DataSource;
+            bsClient.Filter = "name Like '%" + clientBox.Text + "%'";
+            dataGridView1.DataSource = bsClient;
 
 
         }
 
         private void adressBox_TextChanged(object sender, EventArgs e)
         {
-            BindingSource bs = new BindingSource();
-            bs.DataSource = dataGridView1.DataSource;
-            bs.Filter = "adress Like '%" + adressBox.Text + "%'";
-            dataGridView1.DataSource = bs;
+            BindingSource bsAdress = new BindingSource();
+            bsAdress.DataSource = dataGridView1.DataSource;
+            bsAdress.Filter = "adress Like '%" + adressBox.Text + "%'";
+            dataGridView1.DataSource = bsAdress;
         }
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            BindingSource bs = new BindingSource();
-            bs.DataSource = dataGridView1.DataSource;
-            bs.Filter = ("id_status Like '%" + (comboBox1.SelectedIndex + 1) + "%'");
-            dataGridView1.DataSource = bs;
+            int id_status = comboBox1.SelectedIndex +1;
+            BindingSource bsStatus = new BindingSource();
+            bsStatus.DataSource = dataGridView1.DataSource;
+
+            bsStatus.Filter = string.Format("Convert(id_status,'System.String') Like '%{0}%'", id_status);
+            dataGridView1.DataSource = bsStatus;
+
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -235,6 +212,29 @@ namespace uchetzakazov
                     }
                 }
             }
+        }
+
+        private void datePick_ValueChanged(object sender, EventArgs e)
+        {
+            BindingSource bsDate = new BindingSource();
+            bsDate.DataSource = dataGridView1.DataSource;
+            bsDate.Filter = String.Format("Convert(create_date,'System.String') LIKE '%{0}%'", datePick); 
+            dataGridView1.DataSource = bsDate;
+            
+
+        }
+
+        private void resetFilter_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            BindingSource bsFull = new BindingSource();
+            bsFull.DataSource = dataGridView1.DataSource;
+            bsFull.Filter = null;
+
+
+            clientBox.Clear();
+            adressBox.Clear();
+            comboBox1.SelectionLength = 0;
+            datePick.Value = DateTime.Today;
         }
     }
 }

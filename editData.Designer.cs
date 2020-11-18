@@ -31,6 +31,7 @@
             this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(editData));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.textBoxId = new System.Windows.Forms.TextBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
@@ -71,7 +72,7 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.BackColor = System.Drawing.Color.Snow;
+            this.groupBox1.BackColor = System.Drawing.Color.WhiteSmoke;
             this.groupBox1.Controls.Add(this.textBoxId);
             this.groupBox1.Controls.Add(this.textBox1);
             this.groupBox1.Controls.Add(this.editClient);
@@ -91,7 +92,7 @@
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(711, 330);
+            this.groupBox1.Size = new System.Drawing.Size(916, 330);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Изменить данные о клиенте";
@@ -121,10 +122,14 @@
             // btnAddUsluga
             // 
             this.btnAddUsluga.BackColor = System.Drawing.Color.White;
-            this.btnAddUsluga.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.btnAddUsluga.Location = new System.Drawing.Point(426, 283);
+            this.btnAddUsluga.FlatAppearance.BorderColor = System.Drawing.Color.Silver;
+            this.btnAddUsluga.FlatAppearance.MouseDownBackColor = System.Drawing.Color.DodgerBlue;
+            this.btnAddUsluga.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DodgerBlue;
+            this.btnAddUsluga.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAddUsluga.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.btnAddUsluga.Location = new System.Drawing.Point(420, 285);
             this.btnAddUsluga.Name = "btnAddUsluga";
-            this.btnAddUsluga.Size = new System.Drawing.Size(117, 23);
+            this.btnAddUsluga.Size = new System.Drawing.Size(138, 28);
             this.btnAddUsluga.TabIndex = 13;
             this.btnAddUsluga.Text = "Добавить услугу";
             this.btnAddUsluga.UseVisualStyleBackColor = false;
@@ -133,10 +138,14 @@
             // btnAddTovar
             // 
             this.btnAddTovar.BackColor = System.Drawing.Color.White;
-            this.btnAddTovar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.btnAddTovar.Location = new System.Drawing.Point(303, 283);
+            this.btnAddTovar.FlatAppearance.BorderColor = System.Drawing.Color.Silver;
+            this.btnAddTovar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.DodgerBlue;
+            this.btnAddTovar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DodgerBlue;
+            this.btnAddTovar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAddTovar.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.btnAddTovar.Location = new System.Drawing.Point(276, 285);
             this.btnAddTovar.Name = "btnAddTovar";
-            this.btnAddTovar.Size = new System.Drawing.Size(117, 23);
+            this.btnAddTovar.Size = new System.Drawing.Size(138, 28);
             this.btnAddTovar.TabIndex = 12;
             this.btnAddTovar.Text = "Добавить товар";
             this.btnAddTovar.UseVisualStyleBackColor = false;
@@ -158,7 +167,7 @@
             this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.ControlLightLight;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
             dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
@@ -173,18 +182,12 @@
             this.idtovarDataGridViewTextBoxColumn,
             this.iduslugaDataGridViewTextBoxColumn});
             this.dataGridView1.DataSource = this.sostavzakazBindingSource;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridView1.Location = new System.Drawing.Point(276, 43);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
-            this.dataGridView1.Size = new System.Drawing.Size(429, 233);
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.dataGridView1.RowsDefaultCellStyle = dataGridViewCellStyle2;
+            this.dataGridView1.Size = new System.Drawing.Size(634, 233);
             this.dataGridView1.TabIndex = 10;
             // 
             // idzakDataGridViewTextBoxColumn
@@ -197,14 +200,14 @@
             // namezakDataGridViewTextBoxColumn
             // 
             this.namezakDataGridViewTextBoxColumn.DataPropertyName = "name_zak";
-            this.namezakDataGridViewTextBoxColumn.HeaderText = "name_zak";
+            this.namezakDataGridViewTextBoxColumn.HeaderText = "Наименование";
             this.namezakDataGridViewTextBoxColumn.Name = "namezakDataGridViewTextBoxColumn";
             this.namezakDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // pricezakDataGridViewTextBoxColumn
             // 
             this.pricezakDataGridViewTextBoxColumn.DataPropertyName = "price_zak";
-            this.pricezakDataGridViewTextBoxColumn.HeaderText = "price_zak";
+            this.pricezakDataGridViewTextBoxColumn.HeaderText = "Цена";
             this.pricezakDataGridViewTextBoxColumn.Name = "pricezakDataGridViewTextBoxColumn";
             this.pricezakDataGridViewTextBoxColumn.ReadOnly = true;
             // 
@@ -258,7 +261,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label5.Location = new System.Drawing.Point(6, 22);
+            this.label5.Location = new System.Drawing.Point(7, 23);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(56, 18);
             this.label5.TabIndex = 8;
@@ -276,7 +279,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label4.Location = new System.Drawing.Point(6, 230);
+            this.label4.Location = new System.Drawing.Point(7, 230);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(104, 18);
             this.label4.TabIndex = 6;
@@ -294,7 +297,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label3.Location = new System.Drawing.Point(6, 180);
+            this.label3.Location = new System.Drawing.Point(7, 180);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(50, 18);
             this.label3.TabIndex = 4;
@@ -321,7 +324,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label1.Location = new System.Drawing.Point(6, 80);
+            this.label1.Location = new System.Drawing.Point(7, 80);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(58, 18);
             this.label1.TabIndex = 0;
@@ -338,12 +341,17 @@
             // 
             // saveChanges
             // 
-            this.saveChanges.BackColor = System.Drawing.Color.YellowGreen;
+            this.saveChanges.BackColor = System.Drawing.Color.SteelBlue;
+            this.saveChanges.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
             this.saveChanges.FlatAppearance.BorderSize = 0;
-            this.saveChanges.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.saveChanges.FlatAppearance.MouseDownBackColor = System.Drawing.Color.DodgerBlue;
+            this.saveChanges.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DodgerBlue;
+            this.saveChanges.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.saveChanges.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.saveChanges.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.saveChanges.Location = new System.Drawing.Point(12, 348);
             this.saveChanges.Name = "saveChanges";
-            this.saveChanges.Size = new System.Drawing.Size(147, 35);
+            this.saveChanges.Size = new System.Drawing.Size(192, 28);
             this.saveChanges.TabIndex = 12;
             this.saveChanges.Text = "Сохранить изменения";
             this.saveChanges.UseVisualStyleBackColor = false;
@@ -352,11 +360,13 @@
             // button1
             // 
             this.button1.BackColor = System.Drawing.Color.White;
+            this.button1.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.button1.FlatAppearance.BorderSize = 0;
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button1.Location = new System.Drawing.Point(165, 348);
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button1.Location = new System.Drawing.Point(210, 348);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(147, 35);
+            this.button1.Size = new System.Drawing.Size(192, 28);
             this.button1.TabIndex = 13;
             this.button1.Text = "Отменить изменения";
             this.button1.UseVisualStyleBackColor = false;
@@ -371,14 +381,15 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.ClientSize = new System.Drawing.Size(735, 433);
+            this.ClientSize = new System.Drawing.Size(942, 433);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.saveChanges);
             this.Controls.Add(this.groupBox1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "editData";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "editData";
-            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.editData_FormClosed);
+            this.Text = "Редактирование информации о клиенте";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.editData_FormClosing);
             this.Load += new System.EventHandler(this.editData_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
@@ -416,13 +427,13 @@
         private System.Windows.Forms.BindingSource statusesBindingSource;
         private System.Windows.Forms.DataGridViewTextBoxColumn idnameDataGridViewTextBoxColumn;
         private System.Windows.Forms.BindingSource sostavzakazBindingSource;
+        public System.Windows.Forms.TextBox textBoxId;
+        public System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.DataGridViewTextBoxColumn idzakDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn namezakDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn pricezakDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn idclientDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn idtovarDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn iduslugaDataGridViewTextBoxColumn;
-        public System.Windows.Forms.TextBox textBoxId;
-        public System.Windows.Forms.DataGridView dataGridView1;
     }
 }

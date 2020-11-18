@@ -98,12 +98,6 @@
     <Compile Include="newUser.Designer.cs">
       <DependentUpon>newUser.cs</DependentUpon>
     </Compile>
-    <Compile Include="report.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="report.Designer.cs">
-      <DependentUpon>report.cs</DependentUpon>
-    </Compile>
     <Compile Include="priceTovar.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -117,12 +111,6 @@
     </Compile>
     <Compile Include="priceUsluga.Designer.cs">
       <DependentUpon>priceUsluga.cs</DependentUpon>
-    </Compile>
-    <Compile Include="reportView.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="reportView.Designer.cs">
-      <DependentUpon>reportView.cs</DependentUpon>
     </Compile>
     <Compile Include="uchetDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -147,9 +135,6 @@
     <EmbeddedResource Include="newUser.resx">
       <DependentUpon>newUser.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="report.resx">
-      <DependentUpon>report.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="priceTovar.resx">
       <DependentUpon>priceTovar.cs</DependentUpon>
     </EmbeddedResource>
@@ -164,9 +149,6 @@
     </Compile>
     <EmbeddedResource Include="priceUsluga.resx">
       <DependentUpon>priceUsluga.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="reportView.resx">
-      <DependentUpon>reportView.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">

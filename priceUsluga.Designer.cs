@@ -29,16 +29,17 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(priceUsluga));
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.saveUsluga = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
-            this.priceuslugaBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.uchetDataSet = new uchetzakazov.uchetDataSet();
-            this.price_uslugaTableAdapter = new uchetzakazov.uchetDataSetTableAdapters.price_uslugaTableAdapter();
             this.checkUsluga = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nameusluga = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.price = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.priceuslugaBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.uchetDataSet = new uchetzakazov.uchetDataSet();
+            this.saveUsluga = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.price_uslugaTableAdapter = new uchetzakazov.uchetDataSetTableAdapters.price_uslugaTableAdapter();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.priceuslugaBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.uchetDataSet)).BeginInit();
@@ -55,49 +56,11 @@
             this.nameusluga,
             this.price});
             this.dataGridView1.DataSource = this.priceuslugaBindingSource;
-            this.dataGridView1.Location = new System.Drawing.Point(15, 30);
+            this.dataGridView1.Location = new System.Drawing.Point(16, 32);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.Size = new System.Drawing.Size(547, 208);
             this.dataGridView1.TabIndex = 0;
             this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
-            // 
-            // saveUsluga
-            // 
-            this.saveUsluga.BackColor = System.Drawing.Color.YellowGreen;
-            this.saveUsluga.Cursor = System.Windows.Forms.Cursors.Default;
-            this.saveUsluga.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.saveUsluga.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.saveUsluga.Location = new System.Drawing.Point(15, 251);
-            this.saveUsluga.Name = "saveUsluga";
-            this.saveUsluga.Size = new System.Drawing.Size(111, 28);
-            this.saveUsluga.TabIndex = 1;
-            this.saveUsluga.Text = "Сохранить";
-            this.saveUsluga.UseVisualStyleBackColor = false;
-            this.saveUsluga.Click += new System.EventHandler(this.saveUsluga_Click);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label1.Location = new System.Drawing.Point(12, 9);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(126, 18);
-            this.label1.TabIndex = 2;
-            this.label1.Text = "Выберите услуги";
-            // 
-            // priceuslugaBindingSource
-            // 
-            this.priceuslugaBindingSource.DataMember = "price_usluga";
-            this.priceuslugaBindingSource.DataSource = this.uchetDataSet;
-            // 
-            // uchetDataSet
-            // 
-            this.uchetDataSet.DataSetName = "uchetDataSet";
-            this.uchetDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // price_uslugaTableAdapter
-            // 
-            this.price_uslugaTableAdapter.ClearBeforeFill = true;
             // 
             // checkUsluga
             // 
@@ -114,14 +77,56 @@
             // nameusluga
             // 
             this.nameusluga.DataPropertyName = "name_usluga";
-            this.nameusluga.HeaderText = "name_usluga";
+            this.nameusluga.HeaderText = "Наименование";
             this.nameusluga.Name = "nameusluga";
             // 
             // price
             // 
             this.price.DataPropertyName = "price";
-            this.price.HeaderText = "price";
+            this.price.HeaderText = "Цена р/час";
             this.price.Name = "price";
+            // 
+            // priceuslugaBindingSource
+            // 
+            this.priceuslugaBindingSource.DataMember = "price_usluga";
+            this.priceuslugaBindingSource.DataSource = this.uchetDataSet;
+            // 
+            // uchetDataSet
+            // 
+            this.uchetDataSet.DataSetName = "uchetDataSet";
+            this.uchetDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // saveUsluga
+            // 
+            this.saveUsluga.BackColor = System.Drawing.Color.SteelBlue;
+            this.saveUsluga.Cursor = System.Windows.Forms.Cursors.Default;
+            this.saveUsluga.FlatAppearance.BorderColor = System.Drawing.Color.Silver;
+            this.saveUsluga.FlatAppearance.MouseDownBackColor = System.Drawing.Color.DodgerBlue;
+            this.saveUsluga.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DodgerBlue;
+            this.saveUsluga.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.saveUsluga.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.saveUsluga.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.saveUsluga.Location = new System.Drawing.Point(15, 244);
+            this.saveUsluga.Name = "saveUsluga";
+            this.saveUsluga.Size = new System.Drawing.Size(109, 28);
+            this.saveUsluga.TabIndex = 1;
+            this.saveUsluga.Text = "Сохранить";
+            this.saveUsluga.UseVisualStyleBackColor = false;
+            this.saveUsluga.Click += new System.EventHandler(this.saveUsluga_Click);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label1.Location = new System.Drawing.Point(12, 9);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(211, 20);
+            this.label1.TabIndex = 2;
+            this.label1.Text = "Выберите услугу из списка";
+            // 
+            // price_uslugaTableAdapter
+            // 
+            this.price_uslugaTableAdapter.ClearBeforeFill = true;
             // 
             // priceUsluga
             // 
@@ -132,9 +137,10 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.saveUsluga);
             this.Controls.Add(this.dataGridView1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "priceUsluga";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Выбор услуги";
+            this.Text = "Прайс-лист услуг";
             this.Load += new System.EventHandler(this.priceUsluga_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.priceuslugaBindingSource)).EndInit();

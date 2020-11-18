@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(orderForm));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.label5 = new System.Windows.Forms.Label();
             this.dateTime = new System.Windows.Forms.DateTimePicker();
@@ -52,7 +53,7 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.BackColor = System.Drawing.Color.Snow;
+            this.groupBox1.BackColor = System.Drawing.Color.WhiteSmoke;
             this.groupBox1.Controls.Add(this.label5);
             this.groupBox1.Controls.Add(this.dateTime);
             this.groupBox1.Controls.Add(this.clientNumber);
@@ -166,11 +167,16 @@
             // 
             // button2
             // 
-            this.button2.BackColor = System.Drawing.Color.YellowGreen;
-            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button2.BackColor = System.Drawing.Color.SteelBlue;
+            this.button2.FlatAppearance.BorderColor = System.Drawing.Color.Silver;
+            this.button2.FlatAppearance.MouseDownBackColor = System.Drawing.Color.DodgerBlue;
+            this.button2.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DodgerBlue;
+            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button2.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.button2.Location = new System.Drawing.Point(77, 315);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(122, 33);
+            this.button2.Size = new System.Drawing.Size(109, 28);
             this.button2.TabIndex = 1;
             this.button2.Text = "Применить";
             this.button2.UseVisualStyleBackColor = false;
@@ -178,13 +184,15 @@
             // 
             // button3
             // 
+            this.button3.BackColor = System.Drawing.Color.White;
+            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button3.Location = new System.Drawing.Point(227, 315);
+            this.button3.Location = new System.Drawing.Point(192, 316);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(115, 33);
+            this.button3.Size = new System.Drawing.Size(109, 28);
             this.button3.TabIndex = 2;
             this.button3.Text = "Отменить";
-            this.button3.UseVisualStyleBackColor = true;
+            this.button3.UseVisualStyleBackColor = false;
             this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // uchetDataSet
@@ -210,6 +218,7 @@
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.groupBox1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "orderForm";
             this.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

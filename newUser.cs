@@ -57,5 +57,12 @@ namespace uchetzakazov
             this.Close();
             FormUsers.Show();
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            logBox.Clear();
+            passBox.Clear();
+            roleBox.SelectedIndex = -1;
+        }
     }
 }

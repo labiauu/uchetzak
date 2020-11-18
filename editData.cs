@@ -130,14 +130,18 @@ namespace uchetzakazov
             this.Hide();
         }
 
-        private void editData_FormClosed(object sender, FormClosedEventArgs e)
-        {
-            //mainForm.Show();
-        }
+        
 
         private void statusesBindingSource_CurrentChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void editData_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            mainForm mainForm = new mainForm();
+            this.Close();
+            mainForm.Show();
         }
     }
 }

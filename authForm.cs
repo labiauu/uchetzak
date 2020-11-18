@@ -16,6 +16,7 @@ namespace uchetzakazov
 {
     public partial class authForm : Form
     {
+        public static int role;
         public authForm()
         {
             InitializeComponent();
@@ -42,25 +43,43 @@ namespace uchetzakazov
         {
 
             mainForm mainForm = new mainForm();
+            FormUsers formUsers = new FormUsers();
             SqlConnection connection = new SqlConnection();
             SqlCommand comand = new SqlCommand();
             SqlDataAdapter adaptor = new SqlDataAdapter();
             DataSet dataset = new DataSet();
+            
 
             connection.ConnectionString = (@"Data Source=DESKTOP-43BJ3R7\SQLEXPRESS;Initial Catalog=uchet;Integrated Security=True");
             comand.CommandText = @"SELECT * FROM users WHERE name='" + loginbox.Text + "'AND password='" + passbox.Text + "';";
             connection.Open();
+            
 
             comand.Connection = connection;
-
+            
             adaptor.SelectCommand = comand;
             adaptor.Fill(dataset, "0");
             int count = dataset.Tables[0].Rows.Count;
 
             if (count > 0)
             {
-                mainForm.Show();
-                this.Hide();
+                SqlDataReader reader = comand.ExecuteReader();
+                while (reader.Read())
+                {
+                    textBox1.Text = reader["id_role"].ToString();
+                    role = int.Parse(textBox1.Text);
+                }
+                if (role == 1)
+                {
+                    formUsers.Show();
+                    this.Hide();
+                }
+                else
+                {
+                    mainForm.Show();
+                    this.Hide();
+                }
+                
             }
             else
             {
