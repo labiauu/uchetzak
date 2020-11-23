@@ -80,5 +80,11 @@ namespace uchetzakazov
             this.Close();
 
         }
+
+        private void priceUsluga_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            editData editData = new editData();
+            editData.Show();
+        }
     }
 }

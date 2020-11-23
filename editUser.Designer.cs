@@ -154,6 +154,7 @@
             this.Name = "editUser";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Редактирование пользователя";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.editUser_FormClosed);
             this.Load += new System.EventHandler(this.editUser_Load);
             ((System.ComponentModel.ISupportInitialize)(this.uchetDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.roleBindingSource)).EndInit();

@@ -154,6 +154,7 @@
             this.Name = "authForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Авторизация в систему учета заказов";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.authForm_FormClosing);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

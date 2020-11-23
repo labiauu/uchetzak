@@ -223,6 +223,7 @@
             this.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Добавление нового клиента";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.orderForm_FormClosed);
             this.Load += new System.EventHandler(this.orderForm_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();

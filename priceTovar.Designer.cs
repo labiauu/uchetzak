@@ -155,6 +155,7 @@
             this.Name = "priceTovar";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Прайс-лист товаров";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.priceTovar_FormClosed);
             this.Load += new System.EventHandler(this.priceTovar_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pricetovarBindingSource)).EndInit();

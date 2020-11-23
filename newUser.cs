@@ -64,5 +64,11 @@ namespace uchetzakazov
             passBox.Clear();
             roleBox.SelectedIndex = -1;
         }
+
+        private void newUser_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            FormUsers FormUsers = new FormUsers();
+            FormUsers.Show();
+        }
     }
 }

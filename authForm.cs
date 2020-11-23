@@ -89,12 +89,16 @@ namespace uchetzakazov
                 passbox.Clear();
             }
         }
-    
-        
 
-            
-            
+        private void authForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (MessageBox.Show("Закрыть приложение?", "Message", MessageBoxButtons.YesNo) == System.Windows.Forms.DialogResult.No)
+                e.Cancel = true;
+            else
+                e.Cancel = false;
+
         }
+    }
 
         
     }

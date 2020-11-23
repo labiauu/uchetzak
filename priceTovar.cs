@@ -91,6 +91,10 @@ namespace uchetzakazov
             
         }
 
-        
+        private void priceTovar_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            editData editData = new editData();
+            editData.Show();
+        }
     }
 }

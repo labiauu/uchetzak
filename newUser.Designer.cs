@@ -177,6 +177,7 @@
             this.Name = "newUser";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Создание нового пользователя";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.newUser_FormClosed);
             this.Load += new System.EventHandler(this.newUser_Load);
             ((System.ComponentModel.ISupportInitialize)(this.roleBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.uchetDataSet)).EndInit();

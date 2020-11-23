@@ -110,5 +110,11 @@ namespace uchetzakazov
             mainForm mainForm = new mainForm();
             mainForm.Show();
         }
+
+        private void orderForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            mainForm mainForm = new mainForm();
+            mainForm.Show();
+        }
     }
 }

@@ -136,7 +136,6 @@ namespace uchetzakazov
         private void editData_FormClosing(object sender, FormClosingEventArgs e)
         {
             mainForm mainForm = new mainForm();
-            this.Close();
             mainForm.Show();
         }
     }

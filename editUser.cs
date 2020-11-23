@@ -64,5 +64,11 @@ namespace uchetzakazov
             FormUsers FormUsers = new FormUsers();
             FormUsers.Show();
         }
+
+        private void editUser_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            FormUsers FormUsers = new FormUsers();
+            FormUsers.Show();
+        }
     }
 }

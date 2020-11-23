@@ -80,8 +80,6 @@ namespace uchetzakazov
                 string adressClient = dataGridView1.SelectedRows[0].Cells[3].Value.ToString();
                 string commentClient = dataGridView1.SelectedRows[0].Cells[4].Value.ToString();
 
-
-
                 editData.idClient = int.Parse(id);
                 editData.editClient.Text = nameClient;
                 editData.editNumber.Text = numberClient;
@@ -113,7 +111,8 @@ namespace uchetzakazov
 
         private void mainForm_FormClosed(object sender, FormClosedEventArgs e)
         {
-
+            authForm authForm = new authForm();
+            authForm.Show();
         }
 
         private void UsersToolStripMenuItem_Click(object sender, EventArgs e)
@@ -121,11 +120,6 @@ namespace uchetzakazov
             FormUsers formUsers = new FormUsers();
             formUsers.Show();
         }
-
-        
-        
-
-        
 
         private void clientBox_TextChanged(object sender, EventArgs e)
         {
@@ -198,11 +192,7 @@ namespace uchetzakazov
                             Document pdfDoc = new Document(PageSize.A4, 10f, 20f, 20f, 10f);
                             PdfWriter writer = PdfWriter.GetInstance(pdfDoc, stream);
                             BaseFont baseFont = BaseFont.CreateFont(@"C:\Windows\Fonts\arial.ttf", BaseFont.IDENTITY_H, BaseFont.NOT_EMBEDDED);
-
                             pdfDoc.Open();
-
-                           
-
                             pdfDoc.Add(data);
                             pdfDoc.Close();
                             stream.Close();

@@ -141,6 +141,7 @@
             this.Name = "priceUsluga";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Прайс-лист услуг";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.priceUsluga_FormClosed);
             this.Load += new System.EventHandler(this.priceUsluga_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.priceuslugaBindingSource)).EndInit();
