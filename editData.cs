@@ -13,18 +13,18 @@ using System.Runtime.Remoting;
 
 namespace uchetzakazov
 {
-    
+
     public partial class editData : Form
     {
         public static int idClient;
         int idClientZak;
-       
+
 
 
         public editData()
         {
             InitializeComponent();
-            
+
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -47,29 +47,25 @@ namespace uchetzakazov
             this.statusesTableAdapter.Fill(this.uchetDataSet.statuses);
             idClientZak = idClient;
             textBoxId.Text = idClientZak.ToString();
-            using (SqlConnection scZak = new SqlConnection())
+
+            
+            BindingSource bsIdClient = new BindingSource();
+            bsIdClient.DataSource = dataGridView1.DataSource;
+
+            bsIdClient.Filter = string.Format("Convert(id_client,'System.String') Like '%{0}%'", idClientZak);
+            dataGridView1.DataSource = bsIdClient;
+
+            int sum = 0;
+            for (int i = 0; i < dataGridView1.Rows.Count; ++i)
             {
-                scZak.ConnectionString = @"Data Source=DESKTOP-43BJ3R7\SQLEXPRESS;Initial Catalog=uchet;Integrated Security=True";
-                scZak.Open();
-
-                using (SqlCommand comZak = new SqlCommand("SELECT * FROM sostavzakaz where id_client = @idClientZak", scZak))
-                {
-                    
-                    comZak.Parameters.Add("@idClientZak", SqlDbType.Int).Value = idClientZak;
-                    
-
-                    SqlDataAdapter zakAdapter = new SqlDataAdapter(comZak);
-                    DataSet zakDataSet = new DataSet();
-                    zakAdapter.Fill(zakDataSet);
-                    dataGridView1.DataSource = zakDataSet;
-
-                }
-                scZak.Close();
-
+                sum += Convert.ToInt32(dataGridView1.Rows[i].Cells[2].Value);
             }
-
+            label7.Text = sum.ToString();
 
         }
+
+
+
 
         private void button1_Click(object sender, EventArgs e)
         {

@@ -61,9 +61,11 @@
             this.dataGridView1.GridColor = System.Drawing.SystemColors.ControlLightLight;
             this.dataGridView1.Location = new System.Drawing.Point(-1, -1);
             this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.ReadOnly = true;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView1.Size = new System.Drawing.Size(546, 200);
             this.dataGridView1.TabIndex = 0;
+            this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
             this.dataGridView1.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellDoubleClick);
             this.dataGridView1.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dataGridView1_CellFormatting);
             // 
@@ -71,6 +73,7 @@
             // 
             this.checkUser.HeaderText = "";
             this.checkUser.Name = "checkUser";
+            this.checkUser.ReadOnly = true;
             this.checkUser.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             // 
             // id_user
@@ -85,18 +88,21 @@
             this.nameDataGridViewTextBoxColumn.DataPropertyName = "name";
             this.nameDataGridViewTextBoxColumn.HeaderText = "Логин";
             this.nameDataGridViewTextBoxColumn.Name = "nameDataGridViewTextBoxColumn";
+            this.nameDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // idroleDataGridViewTextBoxColumn
             // 
             this.idroleDataGridViewTextBoxColumn.DataPropertyName = "id_role";
             this.idroleDataGridViewTextBoxColumn.HeaderText = "Роль";
             this.idroleDataGridViewTextBoxColumn.Name = "idroleDataGridViewTextBoxColumn";
+            this.idroleDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // passwordDataGridViewTextBoxColumn
             // 
             this.passwordDataGridViewTextBoxColumn.DataPropertyName = "password";
             this.passwordDataGridViewTextBoxColumn.HeaderText = "Пароль";
             this.passwordDataGridViewTextBoxColumn.Name = "passwordDataGridViewTextBoxColumn";
+            this.passwordDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // usersBindingSource
             // 

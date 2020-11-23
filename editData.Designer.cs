@@ -33,6 +33,8 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(editData));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
             this.textBoxId = new System.Windows.Forms.TextBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.editClient = new System.Windows.Forms.TextBox();
@@ -73,6 +75,8 @@
             // groupBox1
             // 
             this.groupBox1.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.groupBox1.Controls.Add(this.label8);
+            this.groupBox1.Controls.Add(this.label7);
             this.groupBox1.Controls.Add(this.textBoxId);
             this.groupBox1.Controls.Add(this.textBox1);
             this.groupBox1.Controls.Add(this.editClient);
@@ -97,6 +101,25 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Изменить данные о клиенте";
             // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(650, 289);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(174, 20);
+            this.label8.TabIndex = 18;
+            this.label8.Text = " Общая сумма заказа:";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label7.Location = new System.Drawing.Point(842, 289);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(57, 20);
+            this.label7.TabIndex = 17;
+            this.label7.Text = "label7";
+            // 
             // textBoxId
             // 
             this.textBoxId.Enabled = false;
@@ -104,6 +127,7 @@
             this.textBoxId.Name = "textBoxId";
             this.textBoxId.Size = new System.Drawing.Size(100, 26);
             this.textBoxId.TabIndex = 16;
+            this.textBoxId.Visible = false;
             // 
             // textBox1
             // 
@@ -111,6 +135,7 @@
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(261, 26);
             this.textBox1.TabIndex = 15;
+            this.textBox1.TabStop = false;
             // 
             // editClient
             // 
@@ -118,6 +143,7 @@
             this.editClient.Name = "editClient";
             this.editClient.Size = new System.Drawing.Size(261, 26);
             this.editClient.TabIndex = 14;
+            this.editClient.TabStop = false;
             // 
             // btnAddUsluga
             // 
@@ -251,6 +277,7 @@
             this.editStatus.Name = "editStatus";
             this.editStatus.Size = new System.Drawing.Size(261, 28);
             this.editStatus.TabIndex = 9;
+            this.editStatus.TabStop = false;
             // 
             // statusesBindingSource
             // 
@@ -274,6 +301,7 @@
             this.editComment.Name = "editComment";
             this.editComment.Size = new System.Drawing.Size(261, 26);
             this.editComment.TabIndex = 7;
+            this.editComment.TabStop = false;
             // 
             // label4
             // 
@@ -292,6 +320,7 @@
             this.editNumber.Name = "editNumber";
             this.editNumber.Size = new System.Drawing.Size(261, 26);
             this.editNumber.TabIndex = 5;
+            this.editNumber.TabStop = false;
             // 
             // label3
             // 
@@ -435,5 +464,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn idclientDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn idtovarDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn iduslugaDataGridViewTextBoxColumn;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label label8;
     }
 }

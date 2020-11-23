@@ -50,7 +50,22 @@ namespace uchetzakazov
 
         private void dataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
+            editUser editUser = new editUser();
+            if (dataGridView1.CurrentRow != null)
+            {
+                string id = dataGridView1.SelectedRows[0].Cells[1].Value.ToString();
+                string login = dataGridView1.SelectedRows[0].Cells[2].Value.ToString();
+                
+                string password = dataGridView1.SelectedRows[0].Cells[4].Value.ToString();
+               
+                editUser.idUser = int.Parse(id);
+                editUser.loginText.Text = login;
+                editUser.passText.Text = password;
+                
 
+            }
+            editUser.Show();
+            this.Hide();
         }
 
         private void deleteUser_Click(object sender, EventArgs e)
@@ -94,6 +109,11 @@ namespace uchetzakazov
             }
             else
                 mainForm.Show();
+        }
+
+        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            
         }
     }
 }
